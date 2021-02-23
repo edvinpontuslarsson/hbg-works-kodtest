@@ -12,10 +12,10 @@ Vi kommer lägga vikt på hur väl du följer våra guidelines samt hur du löse
 ## Guidelines
 - Commita din kod ofta så att vi kan följa arbetsgången.
 - Använd en lämplig mängd färdiga komponenter så som Docker, linters för att kvalitetssäkra lösningen och underlätta onboardingen.
-- Välj en kodstandard för ditt språk och följ den så bra som möjligt.
+- Välj en kodstandard för ditt valda språk och följ den så bra som möjligt.
 - Vid frontend använd separata mallar och undvik blanda kod och html.
 - Kommentera din kod med funktions-kommentarer.
-- Skriv över vår README.md markdown och commita där du skriver ner följande.
+- Skriv över och commita README.md markdown där du skriver ner följande.
   - Installationsprocess om det finns någon.
   - Kort beskrivning av lösningen och vad den gör.
   - Tools som du har använt för att lösa testet.
