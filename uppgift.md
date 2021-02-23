@@ -2,7 +2,7 @@
 Välkommen till vårt kodtest för utvecklare, lycka till!
 
 ## Instruktioner
-- Klona det här repot till din dator med din git klient.
+- Klona det här repot till din dator med din git-klient.
 - Utför uppgiften i valfritt språk och följ våra guidelines så bra du kan.
 - Packa ner hela denna foldern med .git-foldern inkluderad och skicka in den till din kontakt hos oss.
 
@@ -11,7 +11,7 @@ Vi kommer lägga vikt på hur väl du följer våra guidelines samt hur du löse
 
 ## Guidelines
 - Commita din kod ofta så att vi kan följa arbetsgången.
-- Använda så många hjälpande tools som möjligt. ex. Pakethanterare, linters, Docker.
+- Använd en lämplig mängd färdiga komponenter så som Docker, linters för att kvalitetssäkra lösningen och underlätta onboardingen.
 - Välj en kodstandard för ditt språk och följ den så bra som möjligt.
 - Vid frontend använd separata mallar och undvik blanda kod och html.
 - Kommentera din kod med funktions-kommentarer.
