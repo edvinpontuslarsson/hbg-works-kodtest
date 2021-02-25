@@ -7,7 +7,7 @@ Välkommen till vårt kodtest för utvecklare, lycka till!
 - Packa ner hela denna foldern med .git-foldern inkluderad och skicka in den till din kontakt hos oss.
 
 ## Hur bedömer vi dig?
-Vi kommer lägga vikt på hur väl du följer våra guidelines samt skapa diskussion om hur du går till väga med att lösa uppgiften.
+Vi kommer lägga vikt på hur väl du följer våra guidelines samt senare ta en diskussion med dig om ur du går till väga med att lösa uppgiften.
 
 ## Guidelines
 - Commita din kod ofta så att vi kan följa arbetsgången.
