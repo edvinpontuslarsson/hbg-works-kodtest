@@ -37,8 +37,9 @@ Varje kurs är tillgänglig på olika datum, alla ansökningar skall sparas ner 
   - email
   
 ## Resurser
-Design hittar du i repot.
-Kurserna finns som json-format i repot.
+Design hittar du i repot.  
+Kurserna finns som json-format i repot.  
+Fonten som används är [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro)
 
 
 ## Slutligen
