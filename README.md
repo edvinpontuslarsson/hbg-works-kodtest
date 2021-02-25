@@ -6,7 +6,7 @@
 
 <p>
   <a href="https://github.com/helsingborg-stad/hbg-works-kodtest/">
-    <img src="images/logo.png" alt="Logo" width="300">
+    <img src="images/hbg-github-logo-combo-large.png" alt="Helsingborg Stad" width="300">
   </a>
 </p>
 <h3>HBG Works kodtest för rekrytering av utvecklare</h3>
