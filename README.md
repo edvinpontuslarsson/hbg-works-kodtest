@@ -30,6 +30,7 @@ Vi kommer lägga vikt på hur väl du följer våra guidelines samt senare ta en
 - Välj en kodstandard för ditt valda språk och följ den så bra som möjligt.
 - I frontend använd separata mallar och undvik blanda kod och html.
 - Kommentera din kod med funktions-kommentarer.
+- Försök ha en logisk mapp-struktur på dina filer i projektet.
 - Skriv över och commita README.md markdown där du skriver ner följande.
   - Installationsprocess om det finns någon.
   - Kort beskrivning av lösningen och vad den gör.
