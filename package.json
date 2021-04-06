@@ -1,0 +1,19 @@
+{
+  "name": "hbg-works-kodtest",
+  "version": "1.0.0",
+  "description": "[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![License][license-shield]][license-url]",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edvinpontuslarsson/hbg-works-kodtest.git"
+  },
+  "author": "Edvin Larsson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edvinpontuslarsson/hbg-works-kodtest/issues"
+  },
+  "homepage": "https://github.com/edvinpontuslarsson/hbg-works-kodtest#readme"
+}
