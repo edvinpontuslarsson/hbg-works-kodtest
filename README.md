@@ -22,6 +22,9 @@
 ### Tear down
 ``` docker-compose down ```
 
+### Rebuild
+``` docker-compose up --build ```
+
 ## Instruktioner
 - Klona det här repot till din dator med din git-klient.
 - Utför uppgiften i valfritt språk och följ våra guidelines så bra du kan.
