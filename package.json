@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/edvinpontuslarsson/hbg-works-kodtest/issues"
   },
-  "homepage": "https://github.com/edvinpontuslarsson/hbg-works-kodtest#readme"
+  "homepage": "https://github.com/edvinpontuslarsson/hbg-works-kodtest#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3"
+  }
 }
