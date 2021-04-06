@@ -4,7 +4,7 @@
   "description": "[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![License][license-shield]][license-url]",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon --exec node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/edvinpontuslarsson/hbg-works-kodtest#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.12.3"
+    "mongoose": "^5.12.3",
+    "nodemon": "^2.0.7"
   }
 }
