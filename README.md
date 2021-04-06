@@ -14,7 +14,16 @@
   Välkommen till vårt kodtest för utvecklare, lycka till!
 </p>
 
+## Set up instructions
 
+### Run with Docker
+``` docker-compose up ```
+
+### Tear down
+``` docker-compose down ```
+
+### Rebuild
+``` docker-compose up --build ```
 
 ## Instruktioner
 - Klona det här repot till din dator med din git-klient.
