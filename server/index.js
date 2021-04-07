@@ -1,6 +1,3 @@
-// for now just testing that
-// docker + database set up works
-
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
@@ -20,7 +17,7 @@ const getFile = (filePath) =>
     });
   });
 
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
   const courses = await getFile('kurser/kurser.json');
   res.json(courses);
 });
