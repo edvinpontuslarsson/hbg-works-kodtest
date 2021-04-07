@@ -5,15 +5,10 @@
 version: '3'
 services:
   mongo:
-    # TODO remove if unnecessary
-    # container_name: mongo
     image: mongo
     ports:
       - '27017:27017'
   server:
-    # TODO remove if unnecessary
-    # container_name: hbg-works-kodtest
-    # restart: always
     build:
       context: ./server/
     volumes:
