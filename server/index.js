@@ -1,8 +1,6 @@
-// for now just testing that
-// docker + database set up works
-
 const express = require('express');
 const mongoose = require('mongoose');
+const fs = require('fs');
 
 const app = express();
 
@@ -11,8 +9,17 @@ mongoose
   .then(() => console.log('database connected'))
   .catch((err) => console.log(err));
 
-app.get('/', (req, res) => {
-  res.send('Hello Helsingborg!');
+const getFile = (filePath) =>
+  new Promise((resolve, reject) => {
+    fs.readFile(filePath, (err, file) => {
+      if (err) return resolve([]);
+      resolve(JSON.parse(file));
+    });
+  });
+
+app.get('/api', async (req, res) => {
+  const courses = await getFile('kurser/kurser.json');
+  res.json(courses);
 });
 
 const port = 8000;
