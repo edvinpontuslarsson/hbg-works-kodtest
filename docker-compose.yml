@@ -16,10 +16,22 @@ services:
     # restart: always
     build:
       context: ./server/
+    volumes:
+      - ./server/:/usr/app
+      - /usr/app/node_modules
     ports:
       - '8000:8000'
     external_links:
       - mongo
-    # added
     depends_on:
       - mongo
+  web:
+    build:
+      context: ./web/
+    volumes:
+      - ./web/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - '3000:3000'
