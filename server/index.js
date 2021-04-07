@@ -12,13 +12,10 @@ mongoose
   .then(() => console.log('database connected'))
   .catch((err) => console.log(err));
 
-// TODO fix function
-// source: https://github.com/edvinpontuslarsson/randomSentence/blob/master/index.js
 const getFile = (filePath) =>
   new Promise((resolve, reject) => {
     fs.readFile(filePath, (err, file) => {
-      // if (err) throw err;
-
+      if (err) return resolve([]);
       resolve(JSON.parse(file));
     });
   });
