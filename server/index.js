@@ -3,6 +3,7 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
+const fs = require('fs');
 
 const app = express();
 
@@ -11,8 +12,20 @@ mongoose
   .then(() => console.log('database connected'))
   .catch((err) => console.log(err));
 
-app.get('/', (req, res) => {
-  res.send('Hello Helsingborg!');
+// TODO fix function
+// source: https://github.com/edvinpontuslarsson/randomSentence/blob/master/index.js
+const getFile = (filePath) =>
+  new Promise((resolve, reject) => {
+    fs.readFile(filePath, (err, file) => {
+      // if (err) throw err;
+
+      resolve(JSON.parse(file));
+    });
+  });
+
+app.get('/', async (req, res) => {
+  const courses = await getFile('kurser/kurser.json');
+  res.json(courses);
 });
 
 const port = 8000;
