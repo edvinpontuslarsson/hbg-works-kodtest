@@ -1,0 +1,25 @@
+# the docker setup has been especially
+# inspired by the one used in this repository:
+# https://github.com/mrcoles/node-react-docker-compose
+
+version: '3'
+services:
+  mongo:
+    # TODO remove if unnecessary
+    # container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+  server:
+    # TODO remove if unnecessary
+    # container_name: hbg-works-kodtest
+    # restart: always
+    build:
+      context: ./server/
+    ports:
+      - '8000:8000'
+    external_links:
+      - mongo
+    # added
+    depends_on:
+      - mongo
