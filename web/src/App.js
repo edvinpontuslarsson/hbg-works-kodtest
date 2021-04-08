@@ -164,16 +164,14 @@ function App() {
       <button
         onClick={() => {
           axios.post('/api', {
-            data: {
-              companyInfo: {
-                courseId: selectedCourse.id,
-                courseName: selectedCourse.name,
-                courseDate: selectedDate,
-                companyName,
-                companyPhone,
-                companyEmail,
-                participants,
-              },
+            courseApplication: {
+              courseId: selectedCourse.id,
+              courseName: selectedCourse.name,
+              courseDate: selectedDate,
+              companyName,
+              companyPhone,
+              companyEmail,
+              participants,
             },
           });
         }}

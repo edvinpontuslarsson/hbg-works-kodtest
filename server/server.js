@@ -48,7 +48,7 @@ app.post('/api', async (req, res) => {
 
   // await message.save();
 
-  console.log(JSON.stringify(req.body.data));
+  console.log(JSON.stringify(req.body.courseApplication));
 
   res.sendStatus(201);
 });
