@@ -18,11 +18,11 @@ function App() {
     axios.get('/api').then((payload) => {
       console.log(payload.data);
 
-      const courses = payload.data;
-      
-      setCourses(courses);
+      const coursesData = payload.data;
+
+      setCourses(coursesData);
       setSelectedCourse(
-        courses.length > 0 ? courses[0].name : ''
+        coursesData.length > 0 ? coursesData[0].name : ''
       );
     });
   }, []);
