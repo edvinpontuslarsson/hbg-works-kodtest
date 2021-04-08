@@ -6,9 +6,8 @@ function App() {
   const [courses, setCourses] = useState([]);
 
   const [selectedCourse, setSelectedCourse] = useState('');
-
-  // TODO later have select otions dates based on
-  // selected course
+  const [courseDates, setCourseDates] = useState([]);
+  const [selectedDate, setSelectedDate] = useState('');
 
   const [companyName, setCompanyName] = useState('');
   const [companyPhone, setCompanyPhone] = useState('');
@@ -21,26 +20,52 @@ function App() {
       const coursesData = payload.data;
 
       setCourses(coursesData);
-      setSelectedCourse(
-        coursesData.length > 0 ? coursesData[0].name : ''
-      );
+
+      // initial default course selection
+      setSelectedCourse(coursesData[0]?.name);
+      setCourseDates(coursesData[0]?.dates);
+      setSelectedDate(coursesData[0]?.dates[0]);
     });
   }, []);
 
+  const getCourse = (courseName) =>
+    courses.filter(
+      (course) => course.name === courseName
+    )[0];
+
   return (
     <>
-      <select
-        value={selectedCourse}
-        onChange={(input) =>
-          setSelectedCourse(input.target.value)
-        }
-      >
-        {courses.map((course) => (
-          <option key={course.name} value={course.name}>
-            {course.name}
-          </option>
-        ))}
-      </select>
+      <div>
+        <select
+          value={selectedCourse}
+          onChange={(input) => {
+            const courseName = input.target.value;
+            const course = getCourse(courseName);
+
+            setSelectedCourse(courseName);
+            setCourseDates(course?.dates);
+            setSelectedDate(course?.dates[0]);
+          }}
+        >
+          {courses.map((course) => (
+            <option key={course.id} value={course.name}>
+              {course.name}
+            </option>
+          ))}
+        </select>
+        <select
+          value={selectedDate}
+          onChange={(input) => setSelectedDate(input)}
+        >
+          {courseDates.map((date) => (
+            // TODO sometimes dates same, duplicate
+            // key, tabbar firefox
+            <option key={date} value={date}>
+              {date}
+            </option>
+          ))}
+        </select>
+      </div>
       <div>
         <input
           type="text"
