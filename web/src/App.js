@@ -166,11 +166,12 @@ function App() {
           axios.post('/api', {
             data: {
               companyInfo: {
+                courseId: selectedCourse.id,
+                courseName: selectedCourse.name,
+                courseDate: selectedDate,
                 companyName,
                 companyPhone,
                 companyEmail,
-                courseName: selectedCourse.name,
-                selectedDate,
                 participants,
               },
             },
