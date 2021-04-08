@@ -4,6 +4,8 @@ const fs = require('fs');
 
 const app = express();
 
+// TODO global error handling
+
 mongoose
   .connect('mongodb://mongo:27017/hbg-works-kodtest')
   .then(() => console.log('database connected'))
@@ -20,6 +22,13 @@ const getFile = (filePath) =>
 app.get('/api', async (req, res) => {
   const courses = await getFile('kurser/kurser.json');
   res.json(courses);
+});
+
+app.post('/api', async (req, res) => {
+  const message = req.body.message;
+  console.log(message);
+
+  res.sendStatus(201);
 });
 
 const port = 8000;
