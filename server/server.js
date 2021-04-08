@@ -2,8 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
 
-const Message = require('./models/Message');
-
 const app = express();
 
 app.use(express.json());
