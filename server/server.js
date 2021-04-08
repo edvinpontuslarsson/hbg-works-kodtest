@@ -50,7 +50,7 @@ app.post('/api', async (req, res) => {
 
   // await message.save();
 
-  console.log(req.body.data);
+  console.log(JSON.stringify(req.body.data));
 
   res.sendStatus(201);
 });
