@@ -10,9 +10,10 @@ function App() {
 
   useEffect(() => {
     axios.get('/api').then((payload) => {
+      console.log(payload.data);
       setCourses(payload.data);
     });
-  }, [courses]);
+  }, []);
 
   return (
     <>
