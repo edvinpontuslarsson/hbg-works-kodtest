@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
+import { v4 as uuid } from 'uuid';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -12,10 +13,12 @@ function App() {
   const [companyPhone, setCompanyPhone] = useState('');
   const [companyEmail, setCompanyEmail] = useState('');
 
+  const [participants, setParticipants] = useState([
+    { id: uuid(), name: '', phone: '', email: '' },
+  ]);
+
   useEffect(() => {
     axios.get('/api').then((payload) => {
-      console.log(payload.data);
-
       const coursesData = payload.data;
 
       setCourses(coursesData);
@@ -25,6 +28,31 @@ function App() {
       setSelectedDate(coursesData[0]?.dates[0]);
     });
   }, []);
+
+  const handleChangeParticipant = (id, event) => {
+    const updatedParticipants = participants.map((item) =>
+      item.id === id
+        ? {
+            ...item,
+            [event.target.name]: event.target.value,
+          }
+        : item
+    );
+    setParticipants(updatedParticipants);
+  };
+
+  const handleAddParticipant = () => {
+    setParticipants([
+      ...participants,
+      { id: uuid(), name: '', phone: '', email: '' },
+    ]);
+  };
+
+  // const handleRemoveParticipant = (id) => {
+  //   setParticipants(
+  //     participants.filter((item) => item.id !== id)
+  //   );
+  // };
 
   const getCourse = (courseName) =>
     courses.filter(
@@ -36,8 +64,8 @@ function App() {
       <div>
         <select
           value={selectedCourse.name}
-          onChange={(input) => {
-            const courseName = input.target.value;
+          onChange={(event) => {
+            const courseName = event.target.value;
             const course = getCourse(courseName);
 
             setSelectedCourse(course);
@@ -51,8 +79,8 @@ function App() {
         </select>
         <select
           value={selectedDate}
-          onChange={(input) =>
-            setSelectedDate(input.target.value)
+          onChange={(event) =>
+            setSelectedDate(event.target.value)
           }
         >
           {selectedCourse?.dates?.map((date) => (
@@ -67,26 +95,71 @@ function App() {
           type="text"
           value={companyName}
           placeholder="Name"
-          onChange={(input) =>
-            setCompanyName(input.target.value)
+          onChange={(event) =>
+            setCompanyName(event.target.value)
           }
         />
         <input
           type="text"
           value={companyPhone}
           placeholder="Phone"
-          onChange={(input) =>
-            setCompanyPhone(input.target.value)
+          onChange={(event) =>
+            setCompanyPhone(event.target.value)
           }
         />
         <input
           type="text"
           value={companyEmail}
           placeholder="Email"
-          onChange={(input) =>
-            setCompanyEmail(input.target.value)
+          onChange={(event) =>
+            setCompanyEmail(event.target.value)
           }
         />
+      </div>
+      <div>
+        {participants.map((participant) => (
+          <div key={participant.id}>
+            <input
+              type="text"
+              value={participant.name}
+              placeholder="Name"
+              name="name"
+              onChange={(event) => {
+                handleChangeParticipant(
+                  participant.id,
+                  event
+                );
+              }}
+            />
+            <input
+              type="text"
+              value={participant.phone}
+              placeholder="Phone"
+              name="phone"
+              onChange={(event) => {
+                handleChangeParticipant(
+                  participant.id,
+                  event
+                );
+              }}
+            />
+            <input
+              type="text"
+              value={participant.email}
+              placeholder="E-mail"
+              name="email"
+              onChange={(event) => {
+                handleChangeParticipant(
+                  participant.id,
+                  event
+                );
+              }}
+            />
+          </div>
+        ))}
+        <button onClick={() => handleAddParticipant()}>
+          Add a participant
+        </button>
       </div>
       <button
         onClick={() => {
@@ -98,6 +171,7 @@ function App() {
                 companyEmail,
                 courseName: selectedCourse.name,
                 selectedDate,
+                participants,
               },
             },
           });
