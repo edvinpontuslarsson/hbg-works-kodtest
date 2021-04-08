@@ -28,6 +28,15 @@ https://github.com/mrcoles/node-react-docker-compose
 ### Rebuild
 ``` docker-compose up --build ```
 
+### See what is stored in the MongoDB database
+
+1. ``` docker ps ```
+2. ``` docker exec -it <id> bash ```
+3. ``` mongo ```
+4. ``` use hbg-works-kodtest ```
+5. ``` show tables ```
+6. ``` db.<name of collection>.find() ```
+
 ## Instruktioner
 - Klona det här repot till din dator med din git-klient.
 - Utför uppgiften i valfritt språk och följ våra guidelines så bra du kan.

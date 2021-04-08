@@ -2,9 +2,9 @@
   "name": "hbg-works-kodtest",
   "version": "1.0.0",
   "description": "[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![License][license-shield]][license-url]",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec node index.js",
+    "start": "nodemon --exec node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

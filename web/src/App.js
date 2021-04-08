@@ -16,6 +16,16 @@ function App() {
       {courses.map((item) => (
         <p>{item.name}</p>
       ))}
+      <button
+        onClick={() => {
+          axios.post(
+            '/api',
+            { message: 'Hi!' }
+          );
+        }}
+      >
+        Say hi to the Database
+      </button>
     </>
   );
 }

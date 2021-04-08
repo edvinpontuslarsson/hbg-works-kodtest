@@ -2,7 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
 
+const Message = require('./models/Message');
+
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// TODO global error handling
 
 mongoose
   .connect('mongodb://mongo:27017/hbg-works-kodtest')
@@ -20,6 +27,19 @@ const getFile = (filePath) =>
 app.get('/api', async (req, res) => {
   const courses = await getFile('kurser/kurser.json');
   res.json(courses);
+});
+
+app.post('/api', async (req, res) => {
+  const messageData = req.body.message;
+  console.log(messageData);
+
+  const message = new Message({
+    message: messageData,
+  });
+
+  await message.save();
+
+  res.sendStatus(201);
 });
 
 const port = 8000;
