@@ -41,8 +41,6 @@ function App() {
             const course = getCourse(courseName);
 
             setSelectedCourse(course);
-            // setCourseDates(course?.dates);
-            // setSelectedDate(course?.dates[0]);
           }}
         >
           {courses?.map((course) => (
@@ -53,7 +51,9 @@ function App() {
         </select>
         <select
           value={selectedDate}
-          onChange={(input) => setSelectedDate(input)}
+          onChange={(input) =>
+            setSelectedDate(input.target.value)
+          }
         >
           {selectedCourse?.dates?.map((date) => (
             <option key={date} value={date}>
