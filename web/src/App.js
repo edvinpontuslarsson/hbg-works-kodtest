@@ -60,8 +60,10 @@ function App() {
     )[0];
 
   return (
-    <>
+    <main>
       <div>
+        <h2>Course</h2>
+        <label>NAME</label>
         <select
           value={selectedCourse.name}
           onChange={(event) => {
@@ -77,6 +79,7 @@ function App() {
             </option>
           ))}
         </select>
+        <label>DATE</label>
         <select
           value={selectedDate}
           onChange={(event) =>
@@ -91,38 +94,41 @@ function App() {
         </select>
       </div>
       <div>
+        <h2>Company</h2>
+        <label>NAME*</label>
         <input
           type="text"
           value={companyName}
-          placeholder="Name"
           onChange={(event) =>
             setCompanyName(event.target.value)
           }
         />
+        <label>PHONE*</label>
         <input
           type="text"
           value={companyPhone}
-          placeholder="Phone"
           onChange={(event) =>
             setCompanyPhone(event.target.value)
           }
         />
+        <label>E-MAIL*</label>
         <input
           type="text"
           value={companyEmail}
-          placeholder="Email"
           onChange={(event) =>
             setCompanyEmail(event.target.value)
           }
         />
       </div>
       <div>
-        {participants.map((participant) => (
+        <h2>Participants</h2>
+        {participants.map((participant, index) => (
           <div key={participant.id}>
+            <h3>Participant #{index + 1}</h3>
+            <label>NAME*</label>
             <input
               type="text"
               value={participant.name}
-              placeholder="Name"
               name="name"
               onChange={(event) => {
                 handleChangeParticipant(
@@ -131,10 +137,10 @@ function App() {
                 );
               }}
             />
+            <label>PHONE</label>
             <input
               type="text"
               value={participant.phone}
-              placeholder="Phone"
               name="phone"
               onChange={(event) => {
                 handleChangeParticipant(
@@ -143,10 +149,10 @@ function App() {
                 );
               }}
             />
+            <label>E-MAIL</label>
             <input
               type="text"
               value={participant.email}
-              placeholder="E-mail"
               name="email"
               onChange={(event) => {
                 handleChangeParticipant(
@@ -176,9 +182,9 @@ function App() {
           });
         }}
       >
-        Submit
+        Submit application
       </button>
-    </>
+    </main>
   );
 }
 
