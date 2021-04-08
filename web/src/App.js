@@ -5,8 +5,7 @@ import axios from 'axios';
 function App() {
   const [courses, setCourses] = useState([]);
 
-  const [selectedCourse, setSelectedCourse] = useState('');
-  const [courseDates, setCourseDates] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState({});
   const [selectedDate, setSelectedDate] = useState('');
 
   const [companyName, setCompanyName] = useState('');
@@ -22,8 +21,7 @@ function App() {
       setCourses(coursesData);
 
       // initial default course selection
-      setSelectedCourse(coursesData[0]?.name);
-      setCourseDates(coursesData[0]?.dates);
+      setSelectedCourse(coursesData[0]);
       setSelectedDate(coursesData[0]?.dates[0]);
     });
   }, []);
@@ -37,17 +35,17 @@ function App() {
     <>
       <div>
         <select
-          value={selectedCourse}
+          value={selectedCourse.name}
           onChange={(input) => {
             const courseName = input.target.value;
             const course = getCourse(courseName);
 
-            setSelectedCourse(courseName);
-            setCourseDates(course?.dates);
-            setSelectedDate(course?.dates[0]);
+            setSelectedCourse(course);
+            // setCourseDates(course?.dates);
+            // setSelectedDate(course?.dates[0]);
           }}
         >
-          {courses.map((course) => (
+          {courses?.map((course) => (
             <option key={course.id} value={course.name}>
               {course.name}
             </option>
@@ -57,9 +55,7 @@ function App() {
           value={selectedDate}
           onChange={(input) => setSelectedDate(input)}
         >
-          {courseDates.map((date) => (
-            // TODO sometimes dates same, duplicate
-            // key, tabbar firefox
+          {selectedCourse?.dates?.map((date) => (
             <option key={date} value={date}>
               {date}
             </option>
@@ -100,7 +96,8 @@ function App() {
                 companyName,
                 companyPhone,
                 companyEmail,
-                selectedCourse,
+                courseName: selectedCourse.name,
+                selectedDate,
               },
             },
           });
