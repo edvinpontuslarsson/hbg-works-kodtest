@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
 
+const Message = require('./models/Message');
+
 const app = express();
 
 app.use(express.json());
@@ -28,8 +30,14 @@ app.get('/api', async (req, res) => {
 });
 
 app.post('/api', async (req, res) => {
-  const message = req.body.message;
-  console.log(message);
+  const messageData = req.body.message;
+  console.log(messageData);
+
+  const message = new Message({
+    message: messageData,
+  });
+
+  await message.save();
 
   res.sendStatus(201);
 });
