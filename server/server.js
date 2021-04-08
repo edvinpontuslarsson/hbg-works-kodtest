@@ -24,9 +24,21 @@ const getFile = (filePath) =>
     });
   });
 
+// TODO maybe instead feed into db,
+// then unique prop for dates
+const uniqueDates = (courses) =>
+  courses.map((course) => {
+    return {
+      ...course,
+      dates: [...new Set(course.dates)],
+    };
+  });
+
 app.get('/api', async (req, res) => {
   const courses = await getFile('kurser/kurser.json');
-  res.json(courses);
+  console.log(uniqueDates(courses));
+  const coursesUniqueDates = uniqueDates(courses);
+  res.json(coursesUniqueDates);
 });
 
 app.post('/api', async (req, res) => {
