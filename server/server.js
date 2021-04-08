@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
 
+const CourseApplication = require('./models/CourseApplication');
+
 const app = express();
 
 app.use(express.json());
@@ -39,16 +41,11 @@ app.get('/api', async (req, res) => {
 });
 
 app.post('/api', async (req, res) => {
-  // const messageData = req.body.message;
-  // console.log(messageData);
+  const payload = req.body.courseApplication;
 
-  // const message = new Message({
-  //   message: messageData,
-  // });
+  const courseApplication = new CourseApplication(payload);
 
-  // await message.save();
-
-  console.log(JSON.stringify(req.body.courseApplication));
+  await courseApplication.save();
 
   res.sendStatus(201);
 });
