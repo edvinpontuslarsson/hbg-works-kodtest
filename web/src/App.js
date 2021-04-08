@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
+import { v5 as uuid } from 'uuid';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -11,6 +12,10 @@ function App() {
   const [companyName, setCompanyName] = useState('');
   const [companyPhone, setCompanyPhone] = useState('');
   const [companyEmail, setCompanyEmail] = useState('');
+
+  const [participants, setParticipants] = useState([
+    { id: uuid(), name: '', phone: '', email: '' },
+  ]);
 
   useEffect(() => {
     axios.get('/api').then((payload) => {
@@ -26,6 +31,13 @@ function App() {
     });
   }, []);
 
+  const handleParticipantChange = (id, event) => {
+    const participantIndex = participants.findIndex(
+      (item) => item.id === id
+    );
+
+  };
+
   const getCourse = (courseName) =>
     courses.filter(
       (course) => course.name === courseName
@@ -36,8 +48,8 @@ function App() {
       <div>
         <select
           value={selectedCourse.name}
-          onChange={(input) => {
-            const courseName = input.target.value;
+          onChange={(event) => {
+            const courseName = event.target.value;
             const course = getCourse(courseName);
 
             setSelectedCourse(course);
@@ -51,8 +63,8 @@ function App() {
         </select>
         <select
           value={selectedDate}
-          onChange={(input) =>
-            setSelectedDate(input.target.value)
+          onChange={(event) =>
+            setSelectedDate(event.target.value)
           }
         >
           {selectedCourse?.dates?.map((date) => (
@@ -63,28 +75,28 @@ function App() {
         </select>
       </div>
       <div>
-        <input
+        <event
           type="text"
           value={companyName}
           placeholder="Name"
-          onChange={(input) =>
-            setCompanyName(input.target.value)
+          onChange={(event) =>
+            setCompanyName(event.target.value)
           }
         />
-        <input
+        <event
           type="text"
           value={companyPhone}
           placeholder="Phone"
-          onChange={(input) =>
-            setCompanyPhone(input.target.value)
+          onChange={(event) =>
+            setCompanyPhone(event.target.value)
           }
         />
-        <input
+        <event
           type="text"
           value={companyEmail}
           placeholder="Email"
-          onChange={(input) =>
-            setCompanyEmail(input.target.value)
+          onChange={(event) =>
+            setCompanyEmail(event.target.value)
           }
         />
       </div>
