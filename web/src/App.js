@@ -17,9 +17,6 @@ function App() {
 
   return (
     <>
-      {courses.map((item) => (
-        <p>{item.name}</p>
-      ))}
       <input
         type="text"
         value={companyName}
