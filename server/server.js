@@ -36,7 +36,6 @@ const uniqueDates = (courses) =>
 
 app.get('/api', async (req, res) => {
   const courses = await getFile('kurser/kurser.json');
-  console.log(uniqueDates(courses));
   const coursesUniqueDates = uniqueDates(courses);
   res.json(coursesUniqueDates);
 });
