@@ -96,7 +96,6 @@ function App() {
         <input
           type="text"
           value={companyName}
-          placeholder="Name"
           onChange={(event) =>
             setCompanyName(event.target.value)
           }
@@ -104,7 +103,6 @@ function App() {
         <input
           type="text"
           value={companyPhone}
-          placeholder="Phone"
           onChange={(event) =>
             setCompanyPhone(event.target.value)
           }
@@ -112,7 +110,6 @@ function App() {
         <input
           type="text"
           value={companyEmail}
-          placeholder="E-mail"
           onChange={(event) =>
             setCompanyEmail(event.target.value)
           }
@@ -126,7 +123,6 @@ function App() {
             <input
               type="text"
               value={participant.name}
-              placeholder="Name"
               name="name"
               onChange={(event) => {
                 handleChangeParticipant(
@@ -138,7 +134,6 @@ function App() {
             <input
               type="text"
               value={participant.phone}
-              placeholder="Phone"
               name="phone"
               onChange={(event) => {
                 handleChangeParticipant(
@@ -150,7 +145,6 @@ function App() {
             <input
               type="text"
               value={participant.email}
-              placeholder="E-mail"
               name="email"
               onChange={(event) => {
                 handleChangeParticipant(
