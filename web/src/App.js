@@ -60,8 +60,9 @@ function App() {
     )[0];
 
   return (
-    <>
+    <main>
       <div>
+        <h2>Course</h2>
         <select
           value={selectedCourse.name}
           onChange={(event) => {
@@ -91,6 +92,7 @@ function App() {
         </select>
       </div>
       <div>
+        <h2>Company</h2>
         <input
           type="text"
           value={companyName}
@@ -110,15 +112,17 @@ function App() {
         <input
           type="text"
           value={companyEmail}
-          placeholder="Email"
+          placeholder="E-mail"
           onChange={(event) =>
             setCompanyEmail(event.target.value)
           }
         />
       </div>
       <div>
-        {participants.map((participant) => (
+        <h2>Participants</h2>
+        {participants.map((participant, index) => (
           <div key={participant.id}>
+            <h3>Participant #{index + 1}</h3>
             <input
               type="text"
               value={participant.name}
@@ -176,9 +180,9 @@ function App() {
           });
         }}
       >
-        Submit
+        Submit application
       </button>
-    </>
+    </main>
   );
 }
 
