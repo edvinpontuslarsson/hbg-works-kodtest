@@ -30,14 +30,16 @@ app.get('/api', async (req, res) => {
 });
 
 app.post('/api', async (req, res) => {
-  const messageData = req.body.message;
-  console.log(messageData);
+  // const messageData = req.body.message;
+  // console.log(messageData);
 
-  const message = new Message({
-    message: messageData,
-  });
+  // const message = new Message({
+  //   message: messageData,
+  // });
 
-  await message.save();
+  // await message.save();
+
+  console.log(req.body.data);
 
   res.sendStatus(201);
 });
