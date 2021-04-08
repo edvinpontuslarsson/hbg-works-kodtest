@@ -63,6 +63,7 @@ function App() {
     <main>
       <div>
         <h2>Course</h2>
+        <label>NAME</label>
         <select
           value={selectedCourse.name}
           onChange={(event) => {
@@ -78,6 +79,7 @@ function App() {
             </option>
           ))}
         </select>
+        <label>DATE</label>
         <select
           value={selectedDate}
           onChange={(event) =>
@@ -93,6 +95,7 @@ function App() {
       </div>
       <div>
         <h2>Company</h2>
+        <label>NAME*</label>
         <input
           type="text"
           value={companyName}
@@ -100,6 +103,7 @@ function App() {
             setCompanyName(event.target.value)
           }
         />
+        <label>PHONE*</label>
         <input
           type="text"
           value={companyPhone}
@@ -107,6 +111,7 @@ function App() {
             setCompanyPhone(event.target.value)
           }
         />
+        <label>E-MAIL*</label>
         <input
           type="text"
           value={companyEmail}
@@ -120,6 +125,7 @@ function App() {
         {participants.map((participant, index) => (
           <div key={participant.id}>
             <h3>Participant #{index + 1}</h3>
+            <label>NAME*</label>
             <input
               type="text"
               value={participant.name}
@@ -131,6 +137,7 @@ function App() {
                 );
               }}
             />
+            <label>PHONE</label>
             <input
               type="text"
               value={participant.phone}
@@ -142,6 +149,7 @@ function App() {
                 );
               }}
             />
+            <label>E-MAIL</label>
             <input
               type="text"
               value={participant.email}
