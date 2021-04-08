@@ -17,8 +17,13 @@ function App() {
   useEffect(() => {
     axios.get('/api').then((payload) => {
       console.log(payload.data);
-      setCourses(payload.data);
-      setSelectedCourse(courses[0].name);
+
+      const courses = payload.data;
+      
+      setCourses(courses);
+      setSelectedCourse(
+        courses.length > 0 ? courses[0].name : ''
+      );
     });
   }, []);
 
