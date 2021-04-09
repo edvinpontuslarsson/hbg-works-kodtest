@@ -171,13 +171,15 @@ function App() {
         {participants.map((participant, index) => (
           <div key={participant.id}>
             <h3>Participant #{index + 1}</h3>
-            <button
-              onClick={() => {
-                handleRemoveParticipant(participant.id);
-              }}
-            >
-              X
-            </button>
+            {index !== 0 && (
+              <button
+                onClick={() => {
+                  handleRemoveParticipant(participant.id);
+                }}
+              >
+                X
+              </button>
+            )}
             <label>NAME*</label>
             <input
               type="text"
