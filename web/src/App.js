@@ -32,6 +32,11 @@ function App() {
     },
   ]);
 
+  const [
+    invalidParticipantInputsExist,
+    setInvalidParticipantInputsExist,
+  ] = useState(false);
+
   useEffect(() => {
     axios.get('/api').then((payload) => {
       const coursesData = payload.data;
@@ -70,18 +75,22 @@ function App() {
   };
 
   const participantsValidation = () => {
-    const updatedParticipants = participants.map((item) =>
-      isEmpty(item.name)
-        ? {
-            ...item,
-            invalidInput: true,
-          }
-        : {
-            ...item,
-            invalidInput: false,
-          }
-    );
+    const updatedParticipants = [];
+    let anyInvalidInputs = false;
+
+    participants.forEach((item) => {
+      if (item.invalidInput && !isEmpty(item.name)) {
+        item.invalidInput = false;
+      } else if (isEmpty(item.name)) {
+        item.invalidInput = true;
+        anyInvalidInputs = true;
+      }
+
+      updatedParticipants.push(item);
+    });
+
     setParticipants(updatedParticipants);
+    setInvalidParticipantInputsExist(anyInvalidInputs);
   };
 
   // TODO make it possible to remove participant
@@ -226,8 +235,11 @@ function App() {
             />
           </div>
         ))}
-        {/* TODO loop particpants && disabled if not all valid */}
-        <button onClick={() => handleAddParticipant()}>
+        <button
+          // TODO should be disabled if first is empty too
+          disabled={invalidParticipantInputsExist}
+          onClick={() => handleAddParticipant()}
+        >
           Add a participant
         </button>
       </div>
