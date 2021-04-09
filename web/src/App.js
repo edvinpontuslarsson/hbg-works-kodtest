@@ -81,13 +81,11 @@ function App() {
     );
     setParticipants(updatedParticipants);
 
-    // TODO test that works
-    // TODO maybe all conditions not necessary
     if (
       !allParticipantsNamed &&
       event.target.value.length !== 0 &&
-      isCurrentParticipantSingleUnnamed(id) &&
-      getParticipant(id).name.length === 0
+      getParticipant(id).name.length === 0 &&
+      isCurrentParticipantSingleUnnamed(id)
     ) {
       setAllParticipantsNamed(true);
     }
