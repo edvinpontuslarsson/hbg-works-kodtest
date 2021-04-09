@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 // classnames
 const courseAndDate = 'course-and-date';
 const labelAndInput = 'label-and-input';
+const phoneAndEmail = 'phone-and-email';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -144,40 +145,42 @@ function App() {
           />
         </div>
         {invalidName && <p>Name is required</p>}
-        <div className={labelAndInput}>
-          <label>PHONE*</label>
-          <input
-            type="text"
-            value={companyPhone}
-            onBlur={() => {
-              isEmpty(companyPhone) &&
-                setInvalidPhone(true);
-            }}
-            onChange={(event) => {
-              setCompanyPhone(event.target.value);
-              invalidPhone &&
-                !isEmpty(event.target.value) &&
-                setInvalidPhone(false);
-            }}
-          />
-        </div>
-        {invalidPhone && <p>Phone is required</p>}
-        <div className={labelAndInput}>
-          <label>E-MAIL*</label>
-          <input
-            type="text"
-            value={companyEmail}
-            onBlur={() => {
-              !isEmailValid(companyEmail) &&
-                setInvalidEmail(true);
-            }}
-            onChange={(event) => {
-              setCompanyEmail(event.target.value);
-              invalidEmail &&
-                isEmailValid(event.target.value) &&
-                setInvalidEmail(false);
-            }}
-          />
+        <div className={phoneAndEmail}>
+          <div className={labelAndInput}>
+            <label>PHONE*</label>
+            <input
+              type="text"
+              value={companyPhone}
+              onBlur={() => {
+                isEmpty(companyPhone) &&
+                  setInvalidPhone(true);
+              }}
+              onChange={(event) => {
+                setCompanyPhone(event.target.value);
+                invalidPhone &&
+                  !isEmpty(event.target.value) &&
+                  setInvalidPhone(false);
+              }}
+            />
+          </div>
+          {invalidPhone && <p>Phone is required</p>}
+          <div className={labelAndInput}>
+            <label>E-MAIL*</label>
+            <input
+              type="text"
+              value={companyEmail}
+              onBlur={() => {
+                !isEmailValid(companyEmail) &&
+                  setInvalidEmail(true);
+              }}
+              onChange={(event) => {
+                setCompanyEmail(event.target.value);
+                invalidEmail &&
+                  isEmailValid(event.target.value) &&
+                  setInvalidEmail(false);
+              }}
+            />
+          </div>
         </div>
       </div>
       {invalidEmail && <p>Email is not valid</p>}
