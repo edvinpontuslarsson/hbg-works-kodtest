@@ -70,18 +70,15 @@ function App() {
   const getParticipant = (id) =>
     participants.filter((item) => item.id === id)[0];
 
-  // TODO simplify this, remove unused functions
   const handleChangeParticipant = (id, event) => {
-    const updatedParticipants = [];
-
-    participants.forEach((item) => {
-      if (item.id === id) {
-        item[event.target.name] = event.target.value;
-      }
-
-      updatedParticipants.push(item);
-    });
-
+    const updatedParticipants = participants.map((item) =>
+      item.id === id
+        ? {
+            ...item,
+            [event.target.name]: event.target.value,
+          }
+        : item
+    );
     setParticipants(updatedParticipants);
   };
 
