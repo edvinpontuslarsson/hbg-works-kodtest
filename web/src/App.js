@@ -13,9 +13,13 @@ function App() {
   const [companyPhone, setCompanyPhone] = useState('');
   const [companyEmail, setCompanyEmail] = useState('');
 
+  const [invalidName, setInvalidName] = useState(false);
+
   const [participants, setParticipants] = useState([
     { id: uuid(), name: '', phone: '', email: '' },
   ]);
+
+  const isEmpty = (string) => string.length === 0;
 
   useEffect(() => {
     axios.get('/api').then((payload) => {
@@ -99,10 +103,17 @@ function App() {
         <input
           type="text"
           value={companyName}
-          onChange={(event) =>
-            setCompanyName(event.target.value)
-          }
+          onChange={(event) => {
+            setCompanyName(event.target.value);
+            invalidName &&
+              !isEmpty(event.target.value) &&
+              setInvalidName(false);
+          }}
+          onBlur={() => {
+            isEmpty(companyName) && setInvalidName(true);
+          }}
         />
+        {invalidName && <p>Name cannot be empty</p>}
         <label>PHONE*</label>
         <input
           type="text"
