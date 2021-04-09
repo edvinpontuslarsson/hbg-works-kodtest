@@ -57,6 +57,7 @@ function App() {
     ]);
   };
 
+  // TODO make it possible to remove participant
   // const handleRemoveParticipant = (id) => {
   //   setParticipants(
   //     participants.filter((item) => item.id !== id)
@@ -212,6 +213,8 @@ function App() {
             },
           });
         }}
+        // TODO disabled if if anything is invalid
+        // disabled={}
       >
         Submit application
       </button>
