@@ -85,38 +85,36 @@ function App() {
 
   return (
     <main>
-      <div>
-        <h2>Course</h2>
-        <label>NAME</label>
-        <select
-          value={selectedCourse.name}
-          onChange={(event) => {
-            const courseName = event.target.value;
-            const course = getCourse(courseName);
+      <h2>Course</h2>
+      <label>NAME</label>
+      <select
+        value={selectedCourse.name}
+        onChange={(event) => {
+          const courseName = event.target.value;
+          const course = getCourse(courseName);
 
-            setSelectedCourse(course);
-          }}
-        >
-          {courses?.map((course) => (
-            <option key={course.id} value={course.name}>
-              {course.name}
-            </option>
-          ))}
-        </select>
-        <label>DATE</label>
-        <select
-          value={selectedDate}
-          onChange={(event) =>
-            setSelectedDate(event.target.value)
-          }
-        >
-          {selectedCourse?.dates?.map((date) => (
-            <option key={date} value={date}>
-              {date}
-            </option>
-          ))}
-        </select>
-      </div>
+          setSelectedCourse(course);
+        }}
+      >
+        {courses?.map((course) => (
+          <option key={course.id} value={course.name}>
+            {course.name}
+          </option>
+        ))}
+      </select>
+      <label>DATE</label>
+      <select
+        value={selectedDate}
+        onChange={(event) =>
+          setSelectedDate(event.target.value)
+        }
+      >
+        {selectedCourse?.dates?.map((date) => (
+          <option key={date} value={date}>
+            {date}
+          </option>
+        ))}
+      </select>
       <div>
         <h2>Company</h2>
         <label>NAME*</label>
