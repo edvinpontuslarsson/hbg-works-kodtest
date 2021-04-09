@@ -14,6 +14,7 @@ function App() {
   const [companyEmail, setCompanyEmail] = useState('');
 
   const [invalidName, setInvalidName] = useState(false);
+  const [invalidPhone, setInvalidPhone] = useState(false);
 
   const [participants, setParticipants] = useState([
     { id: uuid(), name: '', phone: '', email: '' },
@@ -103,25 +104,32 @@ function App() {
         <input
           type="text"
           value={companyName}
+          onBlur={() => {
+            isEmpty(companyName) && setInvalidName(true);
+          }}
           onChange={(event) => {
             setCompanyName(event.target.value);
             invalidName &&
               !isEmpty(event.target.value) &&
               setInvalidName(false);
           }}
-          onBlur={() => {
-            isEmpty(companyName) && setInvalidName(true);
-          }}
         />
-        {invalidName && <p>Name cannot be empty</p>}
+        {invalidName && <p>Name is required</p>}
         <label>PHONE*</label>
         <input
           type="text"
           value={companyPhone}
-          onChange={(event) =>
-            setCompanyPhone(event.target.value)
-          }
+          onBlur={() => {
+            isEmpty(companyPhone) && setInvalidPhone(true);
+          }}
+          onChange={(event) => {
+            setCompanyPhone(event.target.value);
+            invalidPhone &&
+              !isEmpty(event.target.value) &&
+              setInvalidPhone(false);
+          }}
         />
+        {invalidPhone && <p>Phone is required</p>}
         <label>E-MAIL*</label>
         <input
           type="text"
