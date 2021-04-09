@@ -11,10 +11,18 @@ main {
 }
 
 .label-and-input {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .course-and-date {
   display: flex;
+}
+
+.course-and-date > .label-and-input {
+  flex: 1;
+}
+
+.course-and-date > :first-child {
+  margin-right: 2.5%;
 }
