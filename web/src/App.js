@@ -232,33 +232,35 @@ function App() {
               isEmpty(participants[index].name) && (
                 <p>Participant's name is required</p>
               )}
-            <div className={labelAndInput}>
-              <label>PHONE</label>
-              <input
-                type="text"
-                value={participant.phone}
-                name="phone"
-                onChange={(event) => {
-                  handleChangeParticipant(
-                    participant.id,
-                    event
-                  );
-                }}
-              />
-            </div>
-            <div className={labelAndInput}>
-              <label>E-MAIL</label>
-              <input
-                type="text"
-                value={participant.email}
-                name="email"
-                onChange={(event) => {
-                  handleChangeParticipant(
-                    participant.id,
-                    event
-                  );
-                }}
-              />
+            <div className={phoneAndEmail}>
+              <div className={labelAndInput}>
+                <label>PHONE</label>
+                <input
+                  type="text"
+                  value={participant.phone}
+                  name="phone"
+                  onChange={(event) => {
+                    handleChangeParticipant(
+                      participant.id,
+                      event
+                    );
+                  }}
+                />
+              </div>
+              <div className={labelAndInput}>
+                <label>E-MAIL</label>
+                <input
+                  type="text"
+                  value={participant.email}
+                  name="email"
+                  onChange={(event) => {
+                    handleChangeParticipant(
+                      participant.id,
+                      event
+                    );
+                  }}
+                />
+              </div>
             </div>
           </div>
         ))}
