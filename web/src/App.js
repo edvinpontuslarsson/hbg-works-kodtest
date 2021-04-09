@@ -15,12 +15,16 @@ function App() {
 
   const [invalidName, setInvalidName] = useState(false);
   const [invalidPhone, setInvalidPhone] = useState(false);
+  const [invalidEmail, setInvalidEmail] = useState(false);
+
+  const isEmpty = (string) => string.length === 0;
+
+  const isEmailValid = (email) =>
+    /\S+@\S+\.\S+/.test(email);
 
   const [participants, setParticipants] = useState([
     { id: uuid(), name: '', phone: '', email: '' },
   ]);
-
-  const isEmpty = (string) => string.length === 0;
 
   useEffect(() => {
     axios.get('/api').then((payload) => {
@@ -134,11 +138,19 @@ function App() {
         <input
           type="text"
           value={companyEmail}
-          onChange={(event) =>
-            setCompanyEmail(event.target.value)
-          }
+          onBlur={() => {
+            !isEmailValid(companyEmail) &&
+              setInvalidEmail(true);
+          }}
+          onChange={(event) => {
+            setCompanyEmail(event.target.value);
+            invalidEmail &&
+              isEmailValid(event.target.value) &&
+              setInvalidEmail(false);
+          }}
         />
       </div>
+      {invalidEmail && <p>Email is not valid</p>}
       <div>
         <h2>Participants</h2>
         {participants.map((participant, index) => (
