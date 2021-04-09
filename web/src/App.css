@@ -30,3 +30,12 @@ main {
 .phone-and-email {
     display: flex;
 }
+
+.phone-and-email > div:first-child {
+    width: 38%;
+    margin-right: 4%
+}
+
+.phone-and-email > div:nth-child(2) {
+    width: 58%;
+}
