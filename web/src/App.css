@@ -8,8 +8,26 @@ main {
   flex-direction: column;
 }
 
+/* 
+
+TODO OK solved problem,
+but style that is now for course-section should be for
+company section
+
+*/
+
 .course-section {
+  position: relative;
+}
+
+.course-section::before {
+  content: '';
   background-color: var(--beige);
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+  width: 200vw;
+  left: -100vw;
 }
 
 .course-and-date {
