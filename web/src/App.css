@@ -10,7 +10,11 @@ main {
   margin-right: 25%;
 }
 
-input,
-label {
-  display: block;
+.label-and-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-and-date {
+  display: flex;
 }
