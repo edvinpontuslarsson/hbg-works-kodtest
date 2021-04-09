@@ -249,9 +249,12 @@ function App() {
             },
           });
         }}
-        // TODO disabled if if anything is invalid
-        // TODO participants check too
-        // disabled={}
+        disabled={
+          participants.some((item) => isEmpty(item.name)) ||
+          isEmpty(companyName) ||
+          isEmpty(companyPhone) ||
+          !isEmailValid(companyEmail)
+        }
       >
         Submit application
       </button>
