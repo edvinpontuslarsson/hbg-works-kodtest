@@ -28,17 +28,9 @@ function App() {
       name: '',
       phone: '',
       email: '',
-      // TODO see which props needed,
-      // both places
-      invalidInput: false,
       changed: false,
     },
   ]);
-
-  const [
-    allParticipantsNamed,
-    setAllParticipantsNamed,
-  ] = useState(false);
 
   useEffect(() => {
     axios.get('/api').then((payload) => {
@@ -60,16 +52,10 @@ function App() {
         name: '',
         phone: '',
         email: '',
-        invalidInput: false,
         changed: false,
       },
     ]);
   };
-
-  const isCurrentParticipantSingleUnnamed = (id) =>
-    !participants.some(
-      (item) => item.id !== id && item.name.length === 0
-    );
 
   const getParticipant = (id) =>
     participants.filter((item) => item.id === id)[0];
@@ -84,25 +70,6 @@ function App() {
         : item
     );
     setParticipants(updatedParticipants);
-  };
-
-  const participantsValidation = () => {
-    const updatedParticipants = [];
-    let anyInvalidInputs = false;
-
-    participants.forEach((item) => {
-      if (item.invalidInput && !isEmpty(item.name)) {
-        item.invalidInput = false;
-      } else if (isEmpty(item.name)) {
-        item.invalidInput = true;
-        anyInvalidInputs = true;
-      }
-
-      updatedParticipants.push(item);
-    });
-
-    setParticipants(updatedParticipants);
-    setAllParticipantsNamed(!anyInvalidInputs);
   };
 
   // TODO make it possible to remove participant
@@ -215,7 +182,6 @@ function App() {
                   participant.id
                 );
                 !current.changed &&
-                  // TODO should prob change change func instead
                   handleChangeParticipant(participant.id, {
                     target: {
                       name: 'changed',
