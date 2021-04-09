@@ -4,7 +4,7 @@ import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 
 // classnames
-const course = 'course';
+const courseSection = 'course-section';
 const courseAndDate = 'course-and-date';
 const labelAndInput = 'label-and-input';
 const phoneAndEmail = 'phone-and-email';
@@ -91,7 +91,7 @@ function App() {
 
   return (
     <main>
-      <div className={course}>
+      <section className={courseSection}>
         <h2>Course</h2>
         <div className={courseAndDate}>
           <div className={labelAndInput}>
@@ -128,7 +128,7 @@ function App() {
             </select>
           </div>
         </div>
-      </div>
+      </section>
       <div>
         <h2>Company</h2>
         <div className={labelAndInput}>
