@@ -28,7 +28,10 @@ function App() {
       name: '',
       phone: '',
       email: '',
+      // TODO see which props needed,
+      // both places
       invalidInput: false,
+      changed: false,
     },
   ]);
 
@@ -58,6 +61,7 @@ function App() {
         phone: '',
         email: '',
         invalidInput: false,
+        changed: false,
       },
     ]);
   };
@@ -210,26 +214,26 @@ function App() {
                 const current = getParticipant(
                   participant.id
                 );
-                isEmpty(current.name) &&
+                !current.changed &&
                   // TODO should prob change change func instead
                   handleChangeParticipant(participant.id, {
                     target: {
-                      name: 'invalidInput',
+                      name: 'changed',
                       value: true,
                     },
                   });
               }}
               onChange={(event) => {
-                // just pass in here
                 handleChangeParticipant(
                   participant.id,
                   event
                 );
               }}
             />
-            {participants[index].invalidInput && (
-              <p>Participant's name is required</p>
-            )}
+            {participants[index].changed &&
+              isEmpty(participants[index].name) && (
+                <p>Participant's name is required</p>
+              )}
             <label>PHONE</label>
             <input
               type="text"
