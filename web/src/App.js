@@ -17,7 +17,7 @@ function App() {
   const [invalidPhone, setInvalidPhone] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
 
-  const isEmpty = (string) => string.length === 0;
+  const isEmpty = (string) => string === '';
 
   const isEmailValid = (email) =>
     /\S+@\S+\.\S+/.test(email);
@@ -70,25 +70,19 @@ function App() {
   const getParticipant = (id) =>
     participants.filter((item) => item.id === id)[0];
 
+  // TODO simplify this, remove unused functions
   const handleChangeParticipant = (id, event) => {
-    const updatedParticipants = participants.map((item) =>
-      item.id === id
-        ? {
-            ...item,
-            [event.target.name]: event.target.value,
-          }
-        : item
-    );
-    setParticipants(updatedParticipants);
+    const updatedParticipants = [];
 
-    if (
-      !allParticipantsNamed &&
-      event.target.value.length !== 0 &&
-      getParticipant(id).name.length === 0 &&
-      isCurrentParticipantSingleUnnamed(id)
-    ) {
-      setAllParticipantsNamed(true);
-    }
+    participants.forEach((item) => {
+      if (item.id === id) {
+        item[event.target.name] = event.target.value;
+      }
+
+      updatedParticipants.push(item);
+    });
+
+    setParticipants(updatedParticipants);
   };
 
   const participantsValidation = () => {
@@ -215,8 +209,21 @@ function App() {
               type="text"
               value={participant.name}
               name="name"
-              onBlur={() => participantsValidation()}
+              onBlur={() => {
+                const current = getParticipant(
+                  participant.id
+                );
+                isEmpty(current.name) &&
+                  // TODO should prob change change func instead
+                  handleChangeParticipant(participant.id, {
+                    target: {
+                      name: 'invalidInput',
+                      value: true,
+                    },
+                  });
+              }}
               onChange={(event) => {
+                // just pass in here
                 handleChangeParticipant(
                   participant.id,
                   event
@@ -276,6 +283,7 @@ function App() {
           });
         }}
         // TODO disabled if if anything is invalid
+        // TODO participants check too
         // disabled={}
       >
         Submit application
