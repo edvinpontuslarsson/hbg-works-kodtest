@@ -8,19 +8,11 @@ main {
   flex-direction: column;
 }
 
-/* 
-
-TODO OK solved problem,
-but style that is now for course-section should be for
-company section
-
-*/
-
-.course-section {
+.company-section {
   position: relative;
 }
 
-.course-section::before {
+.company-section::before {
   content: '';
   background-color: var(--beige);
   position: absolute;

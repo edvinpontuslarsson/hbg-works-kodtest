@@ -4,7 +4,7 @@ import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 
 // classnames
-const courseSection = 'course-section';
+const companySection = 'company-section';
 const courseAndDate = 'course-and-date';
 const labelAndInput = 'label-and-input';
 const phoneAndEmail = 'phone-and-email';
@@ -91,45 +91,43 @@ function App() {
 
   return (
     <main>
-      <section className={courseSection}>
-        <h2>Course</h2>
-        <div className={courseAndDate}>
-          <div className={labelAndInput}>
-            <label>NAME</label>
-            <select
-              value={selectedCourse.name}
-              onChange={(event) => {
-                const courseName = event.target.value;
-                const course = getCourse(courseName);
+      <h2>Course</h2>
+      <div className={courseAndDate}>
+        <div className={labelAndInput}>
+          <label>NAME</label>
+          <select
+            value={selectedCourse.name}
+            onChange={(event) => {
+              const courseName = event.target.value;
+              const course = getCourse(courseName);
 
-                setSelectedCourse(course);
-              }}
-            >
-              {courses?.map((course) => (
-                <option key={course.id} value={course.name}>
-                  {course.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={labelAndInput}>
-            <label>DATE</label>
-            <select
-              value={selectedDate}
-              onChange={(event) =>
-                setSelectedDate(event.target.value)
-              }
-            >
-              {selectedCourse?.dates?.map((date) => (
-                <option key={date} value={date}>
-                  {date}
-                </option>
-              ))}
-            </select>
-          </div>
+              setSelectedCourse(course);
+            }}
+          >
+            {courses?.map((course) => (
+              <option key={course.id} value={course.name}>
+                {course.name}
+              </option>
+            ))}
+          </select>
         </div>
-      </section>
-      <div>
+        <div className={labelAndInput}>
+          <label>DATE</label>
+          <select
+            value={selectedDate}
+            onChange={(event) =>
+              setSelectedDate(event.target.value)
+            }
+          >
+            {selectedCourse?.dates?.map((date) => (
+              <option key={date} value={date}>
+                {date}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <section className={companySection}>
         <h2>Company</h2>
         <div className={labelAndInput}>
           <label>NAME*</label>
@@ -185,7 +183,7 @@ function App() {
             />
           </div>
         </div>
-      </div>
+      </section>
       {invalidEmail && <p>Email is not valid</p>}
       <div>
         <h2>Participants</h2>
