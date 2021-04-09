@@ -183,6 +183,7 @@ function App() {
                 );
                 !current.changed &&
                   handleChangeParticipant(participant.id, {
+                    // mimics event interface
                     target: {
                       name: 'changed',
                       value: true,
