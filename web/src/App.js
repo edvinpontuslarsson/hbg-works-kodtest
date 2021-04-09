@@ -253,7 +253,9 @@ function App() {
           </div>
         ))}
         <button
-          disabled={!allParticipantsNamed}
+          disabled={participants.some(
+            (item) => item.name === ''
+          )}
           onClick={() => handleAddParticipant()}
         >
           Add a participant
