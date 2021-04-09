@@ -23,7 +23,13 @@ function App() {
     /\S+@\S+\.\S+/.test(email);
 
   const [participants, setParticipants] = useState([
-    { id: uuid(), name: '', phone: '', email: '' },
+    {
+      id: uuid(),
+      name: '',
+      phone: '',
+      email: '',
+      invalidInput: false,
+    },
   ]);
 
   useEffect(() => {
@@ -38,6 +44,19 @@ function App() {
     });
   }, []);
 
+  const handleAddParticipant = () => {
+    setParticipants([
+      ...participants,
+      {
+        id: uuid(),
+        name: '',
+        phone: '',
+        email: '',
+        invalidInput: false,
+      },
+    ]);
+  };
+
   const handleChangeParticipant = (id, event) => {
     const updatedParticipants = participants.map((item) =>
       item.id === id
@@ -50,11 +69,19 @@ function App() {
     setParticipants(updatedParticipants);
   };
 
-  const handleAddParticipant = () => {
-    setParticipants([
-      ...participants,
-      { id: uuid(), name: '', phone: '', email: '' },
-    ]);
+  const participantsValidation = () => {
+    const updatedParticipants = participants.map((item) =>
+      isEmpty(item.name)
+        ? {
+            ...item,
+            invalidInput: true,
+          }
+        : {
+            ...item,
+            invalidInput: false,
+          }
+    );
+    setParticipants(updatedParticipants);
   };
 
   // TODO make it possible to remove participant
@@ -162,6 +189,7 @@ function App() {
               type="text"
               value={participant.name}
               name="name"
+              onBlur={() => participantsValidation()}
               onChange={(event) => {
                 handleChangeParticipant(
                   participant.id,
@@ -169,6 +197,9 @@ function App() {
                 );
               }}
             />
+            {participants[index].invalidInput && (
+              <p>Participant's name is required</p>
+            )}
             <label>PHONE</label>
             <input
               type="text"
@@ -195,6 +226,7 @@ function App() {
             />
           </div>
         ))}
+        {/* TODO loop particpants && disabled if not all valid */}
         <button onClick={() => handleAddParticipant()}>
           Add a participant
         </button>
