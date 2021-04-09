@@ -13,8 +13,23 @@ function App() {
   const [companyPhone, setCompanyPhone] = useState('');
   const [companyEmail, setCompanyEmail] = useState('');
 
+  const [invalidName, setInvalidName] = useState(false);
+  const [invalidPhone, setInvalidPhone] = useState(false);
+  const [invalidEmail, setInvalidEmail] = useState(false);
+
+  const isEmpty = (string) => string === '';
+
+  const isEmailValid = (email) =>
+    /\S+@\S+\.\S+/.test(email);
+
   const [participants, setParticipants] = useState([
-    { id: uuid(), name: '', phone: '', email: '' },
+    {
+      id: uuid(),
+      name: '',
+      phone: '',
+      email: '',
+      changed: false,
+    },
   ]);
 
   useEffect(() => {
@@ -29,6 +44,22 @@ function App() {
     });
   }, []);
 
+  const handleAddParticipant = () => {
+    setParticipants([
+      ...participants,
+      {
+        id: uuid(),
+        name: '',
+        phone: '',
+        email: '',
+        changed: false,
+      },
+    ]);
+  };
+
+  const getParticipant = (id) =>
+    participants.filter((item) => item.id === id)[0];
+
   const handleChangeParticipant = (id, event) => {
     const updatedParticipants = participants.map((item) =>
       item.id === id
@@ -41,13 +72,7 @@ function App() {
     setParticipants(updatedParticipants);
   };
 
-  const handleAddParticipant = () => {
-    setParticipants([
-      ...participants,
-      { id: uuid(), name: '', phone: '', email: '' },
-    ]);
-  };
-
+  // TODO make it possible to remove participant
   // const handleRemoveParticipant = (id) => {
   //   setParticipants(
   //     participants.filter((item) => item.id !== id)
@@ -99,27 +124,49 @@ function App() {
         <input
           type="text"
           value={companyName}
-          onChange={(event) =>
-            setCompanyName(event.target.value)
-          }
+          onBlur={() => {
+            isEmpty(companyName) && setInvalidName(true);
+          }}
+          onChange={(event) => {
+            setCompanyName(event.target.value);
+            invalidName &&
+              !isEmpty(event.target.value) &&
+              setInvalidName(false);
+          }}
         />
+        {invalidName && <p>Name is required</p>}
         <label>PHONE*</label>
         <input
           type="text"
           value={companyPhone}
-          onChange={(event) =>
-            setCompanyPhone(event.target.value)
-          }
+          onBlur={() => {
+            isEmpty(companyPhone) && setInvalidPhone(true);
+          }}
+          onChange={(event) => {
+            setCompanyPhone(event.target.value);
+            invalidPhone &&
+              !isEmpty(event.target.value) &&
+              setInvalidPhone(false);
+          }}
         />
+        {invalidPhone && <p>Phone is required</p>}
         <label>E-MAIL*</label>
         <input
           type="text"
           value={companyEmail}
-          onChange={(event) =>
-            setCompanyEmail(event.target.value)
-          }
+          onBlur={() => {
+            !isEmailValid(companyEmail) &&
+              setInvalidEmail(true);
+          }}
+          onChange={(event) => {
+            setCompanyEmail(event.target.value);
+            invalidEmail &&
+              isEmailValid(event.target.value) &&
+              setInvalidEmail(false);
+          }}
         />
       </div>
+      {invalidEmail && <p>Email is not valid</p>}
       <div>
         <h2>Participants</h2>
         {participants.map((participant, index) => (
@@ -130,6 +177,19 @@ function App() {
               type="text"
               value={participant.name}
               name="name"
+              onBlur={() => {
+                const current = getParticipant(
+                  participant.id
+                );
+                !current.changed &&
+                  handleChangeParticipant(participant.id, {
+                    // mimics event interface
+                    target: {
+                      name: 'changed',
+                      value: true,
+                    },
+                  });
+              }}
               onChange={(event) => {
                 handleChangeParticipant(
                   participant.id,
@@ -137,6 +197,10 @@ function App() {
                 );
               }}
             />
+            {participants[index].changed &&
+              isEmpty(participants[index].name) && (
+                <p>Participant's name is required</p>
+              )}
             <label>PHONE</label>
             <input
               type="text"
@@ -163,7 +227,12 @@ function App() {
             />
           </div>
         ))}
-        <button onClick={() => handleAddParticipant()}>
+        <button
+          disabled={participants.some(
+            (item) => item.name === ''
+          )}
+          onClick={() => handleAddParticipant()}
+        >
           Add a participant
         </button>
       </div>
@@ -181,6 +250,12 @@ function App() {
             },
           });
         }}
+        disabled={
+          participants.some((item) => isEmpty(item.name)) ||
+          isEmpty(companyName) ||
+          isEmpty(companyPhone) ||
+          !isEmailValid(companyEmail)
+        }
       >
         Submit application
       </button>

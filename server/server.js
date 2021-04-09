@@ -35,12 +35,16 @@ const uniqueDates = (courses) =>
   });
 
 app.get('/api', async (req, res) => {
+  // TODO try catch wrap
   const courses = await getFile('kurser/kurser.json');
   const coursesUniqueDates = uniqueDates(courses);
   res.json(coursesUniqueDates);
 });
 
 app.post('/api', async (req, res) => {
+  // TODO try catch wrap
+  // can quickly test works by
+  // adding required field to schema not coming from client
   const payload = req.body.courseApplication;
 
   const courseApplication = new CourseApplication(payload);
