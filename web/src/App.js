@@ -33,8 +33,8 @@ function App() {
   ]);
 
   const [
-    invalidParticipantInputsExist,
-    setInvalidParticipantInputsExist,
+    allParticipantsNamed,
+    setAllParticipantsNamed,
   ] = useState(false);
 
   useEffect(() => {
@@ -62,6 +62,14 @@ function App() {
     ]);
   };
 
+  const isCurrentParticipantSingleUnnamed = (id) =>
+    !participants.some(
+      (item) => item.id !== id && item.name.length === 0
+    );
+
+  const getParticipant = (id) =>
+    participants.filter((item) => item.id === id)[0];
+
   const handleChangeParticipant = (id, event) => {
     const updatedParticipants = participants.map((item) =>
       item.id === id
@@ -72,6 +80,17 @@ function App() {
         : item
     );
     setParticipants(updatedParticipants);
+
+    // TODO test that works
+    // TODO maybe all conditions not necessary
+    if (
+      !allParticipantsNamed &&
+      event.target.value.length !== 0 &&
+      isCurrentParticipantSingleUnnamed(id) &&
+      getParticipant(id).name.length === 0
+    ) {
+      setAllParticipantsNamed(true);
+    }
   };
 
   const participantsValidation = () => {
@@ -90,7 +109,7 @@ function App() {
     });
 
     setParticipants(updatedParticipants);
-    setInvalidParticipantInputsExist(anyInvalidInputs);
+    setAllParticipantsNamed(!anyInvalidInputs);
   };
 
   // TODO make it possible to remove participant
@@ -236,8 +255,7 @@ function App() {
           </div>
         ))}
         <button
-          // TODO should be disabled if first is empty too
-          disabled={invalidParticipantInputsExist}
+          disabled={!allParticipantsNamed}
           onClick={() => handleAddParticipant()}
         >
           Add a participant
