@@ -72,12 +72,11 @@ function App() {
     setParticipants(updatedParticipants);
   };
 
-  // TODO make it possible to remove participant
-  // const handleRemoveParticipant = (id) => {
-  //   setParticipants(
-  //     participants.filter((item) => item.id !== id)
-  //   );
-  // };
+  const handleRemoveParticipant = (id) => {
+    setParticipants(
+      participants.filter((item) => item.id !== id)
+    );
+  };
 
   const getCourse = (courseName) =>
     courses.filter(
@@ -172,6 +171,15 @@ function App() {
         {participants.map((participant, index) => (
           <div key={participant.id}>
             <h3>Participant #{index + 1}</h3>
+            {index !== 0 && (
+              <button
+                onClick={() => {
+                  handleRemoveParticipant(participant.id);
+                }}
+              >
+                X
+              </button>
+            )}
             <label>NAME*</label>
             <input
               type="text"
