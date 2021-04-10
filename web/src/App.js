@@ -342,6 +342,15 @@ function App() {
       >
         Submit application
       </button>
+      <a
+        href=""
+        onClick={(event) => {
+          event.preventDefault();
+          console.log('?');
+        }}
+      >
+        View submitted applications
+      </a>
     </main>
   );
 }
