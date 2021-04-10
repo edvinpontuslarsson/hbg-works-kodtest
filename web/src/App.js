@@ -31,8 +31,9 @@ function App() {
   const [invalidPhone, setInvalidPhone] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
 
-  const [applicationsJson, setApplicationsJson] = useState(
-    ''
+  const [applications, setApplications] = useState([]);
+  const [hideApplications, setHideApplications] = useState(
+    false
   );
 
   const isEmpty = (string) => string === '';
@@ -342,15 +343,33 @@ function App() {
       >
         Submit application
       </button>
-      <a
-        href="#"
-        onClick={(event) => {
-          event.preventDefault();
-          console.log('?');
-        }}
-      >
-        View submitted applications
-      </a>
+      {applications.length === 0 ? (
+        <a
+          href="#"
+          onClick={(event) => {
+            event.preventDefault();
+            axios
+              .get('/api/applications')
+              .then((payload) => {
+                setApplications(payload.data);
+              });
+          }}
+        >
+          View submitted applications
+        </a>
+      ) : (
+        <a
+          href="#"
+          onClick={(event) => {
+            event.preventDefault();
+            setHideApplications(!hideApplications);
+          }}
+        >
+          {hideApplications
+            ? 'View submitted applications'
+            : 'Hide applications'}
+        </a>
+      )}
     </main>
   );
 }
