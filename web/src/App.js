@@ -10,6 +10,7 @@ const phoneAndEmail = 'phone-and-email';
 const companySection = 'company-section';
 const participantsSection = 'participants-section';
 const participantHeading = 'participant-heading';
+const errorMessage = 'error-message';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -147,7 +148,7 @@ function App() {
             }}
           />
         </div>
-        {invalidName && <p>Name is required</p>}
+        {invalidName && <p className={errorMessage}>Name is required</p>}
         <div className={phoneAndEmail}>
           <div className={labelAndInput}>
             <label>PHONE*</label>
@@ -166,7 +167,7 @@ function App() {
               }}
             />
           </div>
-          {invalidPhone && <p>Phone is required</p>}
+          {invalidPhone && <p className={errorMessage}>Phone is required</p>}
           <div className={labelAndInput}>
             <label>E-MAIL*</label>
             <input
@@ -186,7 +187,7 @@ function App() {
           </div>
         </div>
       </section>
-      {invalidEmail && <p>Email is not valid</p>}
+      {invalidEmail && <p className={errorMessage}>Email is not valid</p>}
       <section className={participantsSection}>
         <h2>Participants</h2>
         {participants.map((participant, index) => (
@@ -235,7 +236,7 @@ function App() {
             </div>
             {participants[index].changed &&
               isEmpty(participants[index].name) && (
-                <p>Participant's name is required</p>
+                <p className={errorMessage}>Participant's name is required</p>
               )}
             <div className={phoneAndEmail}>
               <div className={labelAndInput}>

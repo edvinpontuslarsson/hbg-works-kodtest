@@ -8,6 +8,11 @@ main {
   flex-direction: column;
 }
 
+.error-message {
+  color: red;
+  margin-top: 0px;
+}
+
 .course-and-date > .label-and-input {
   flex: 1;
 }
