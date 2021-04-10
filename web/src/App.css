@@ -114,3 +114,10 @@ input {
   margin-bottom: 100px;
   width: 100%;
 }
+
+@media only screen and (max-width: 1025px) {
+  main {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+}
