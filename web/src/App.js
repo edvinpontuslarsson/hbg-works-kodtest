@@ -343,7 +343,7 @@ function App() {
         Submit application
       </button>
       <a
-        href=""
+        href="#"
         onClick={(event) => {
           event.preventDefault();
           console.log('?');
