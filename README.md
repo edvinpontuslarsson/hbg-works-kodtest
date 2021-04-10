@@ -16,9 +16,6 @@
 
 ## Set up instructions
 
-### Docker setup inspiration:
-https://github.com/mrcoles/node-react-docker-compose
-
 ### Run with Docker
 ``` docker-compose up ```
 
