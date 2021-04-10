@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { v4 as uuid } from 'uuid';
 import classnames from 'classnames';
 
 import {
@@ -11,6 +10,7 @@ import {
   errorMessage,
   errorBorder,
 } from '../utils/classNames';
+import Participant from '../utils/Participant';
 import ApplicationSubmitButton from './ApplicationSubmitButton';
 import SubmittedApplications from './SubmittedApplications';
 import ParticipantsSection from './ParticipantsSection';
@@ -37,13 +37,7 @@ const ApplicationForm = () => {
     /\S+@\S+\.\S+/.test(email);
 
   const [participants, setParticipants] = useState([
-    {
-      id: uuid(),
-      name: '',
-      phone: '',
-      email: '',
-      changed: false,
-    },
+    new Participant(),
   ]);
 
   useEffect(() => {
@@ -62,30 +56,11 @@ const ApplicationForm = () => {
     setCompanyName('');
     setCompanyPhone('');
     setCompanyEmail('');
-
-    // TODO use reusable object/class here instead
-    setParticipants([
-      {
-        id: uuid(),
-        name: '',
-        phone: '',
-        email: '',
-        changed: false,
-      },
-    ]);
+    setParticipants([new Participant()]);
   };
 
   const handleAddParticipant = () => {
-    setParticipants([
-      ...participants,
-      {
-        id: uuid(),
-        name: '',
-        phone: '',
-        email: '',
-        changed: false,
-      },
-    ]);
+    setParticipants([...participants, new Participant()]);
   };
 
   const getParticipant = (id) =>
