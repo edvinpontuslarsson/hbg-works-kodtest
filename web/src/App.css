@@ -31,6 +31,7 @@ main {
 
 .company-section {
   position: relative;
+  padding-bottom: 40px;
 }
 
 .company-section > h2 {
