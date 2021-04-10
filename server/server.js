@@ -34,14 +34,23 @@ const uniqueDates = (courses) =>
     };
   });
 
-app.get('/api', async (req, res) => {
+app.get('/api/courses', async (req, res) => {
   // TODO try catch wrap
   const courses = await getFile('kurser/kurser.json');
   const coursesUniqueDates = uniqueDates(courses);
   res.json(coursesUniqueDates);
 });
 
-app.post('/api', async (req, res) => {
+app.get('/api/applications', async (req, res) => {
+  try {
+    const applications = await CourseApplication.find();
+    res.json(applications);
+  } catch (error) {
+    res.status(500).json([]);
+  }
+});
+
+app.post('/api/applications', async (req, res) => {
   // TODO try catch wrap
   // can quickly test works by
   // adding required field to schema not coming from client

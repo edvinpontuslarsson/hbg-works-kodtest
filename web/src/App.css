@@ -1,6 +1,7 @@
 main {
   margin-left: 25%;
   margin-right: 25%;
+  padding-bottom: 40px;
 }
 
 select,
@@ -102,10 +103,20 @@ input {
   padding: 0;
   font: inherit;
   outline: inherit;
-
   position: absolute;
   right: 0;
   color: red;
+}
+
+.fetch-applications {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+  color: #0000EE;
+  text-decoration: underline;
+  margin-bottom: 1rem;
 }
 
 .add-participant-button {

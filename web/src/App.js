@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 import classnames from 'classnames';
+import ReactJson from 'react-json-view';
 
 // classnames
 const courseAndDate = 'course-and-date';
@@ -15,6 +16,7 @@ const errorMessage = 'error-message';
 const errorBorder = 'error-border';
 const submitButton = 'submit-button';
 const addParticipantButton = 'add-participant-button';
+const fetchApplications = 'fetch-applications';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -29,6 +31,8 @@ function App() {
   const [invalidName, setInvalidName] = useState(false);
   const [invalidPhone, setInvalidPhone] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
+
+  const [applications, setApplications] = useState([]);
 
   const isEmpty = (string) => string === '';
 
@@ -46,7 +50,7 @@ function App() {
   ]);
 
   useEffect(() => {
-    axios.get('/api').then((payload) => {
+    axios.get('/api/courses').then((payload) => {
       const coursesData = payload.data;
 
       setCourses(coursesData);
@@ -316,7 +320,7 @@ function App() {
       <button
         className={submitButton}
         onClick={() => {
-          axios.post('/api', {
+          axios.post('/api/applications', {
             courseApplication: {
               courseId: selectedCourse.id,
               courseName: selectedCourse.name,
@@ -337,6 +341,20 @@ function App() {
       >
         Submit application
       </button>
+
+      <button
+        className={fetchApplications}
+        onClick={() => {
+          axios.get('/api/applications').then((payload) => {
+            setApplications(payload.data);
+          });
+        }}
+      >
+        Fetch submitted applications
+      </button>
+      {applications.length > 0 && (
+        <ReactJson src={applications} />
+      )}
     </main>
   );
 }
