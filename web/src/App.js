@@ -257,6 +257,11 @@ function App() {
                     event
                   );
                 }}
+                className={classnames({
+                  [`${errorBorder}`]:
+                    participants[index].changed &&
+                    isEmpty(participants[index].name),
+                })}
               />
               {participants[index].changed &&
                 isEmpty(participants[index].name) && (
