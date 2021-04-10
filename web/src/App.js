@@ -109,7 +109,10 @@ function App() {
   const handleSubmit = () => {};
 
   return (
-    <ToastProvider>
+    <ToastProvider
+      autoDismiss={true}
+      placement="bottom-center"
+    >
       <main>
         <h2>Course</h2>
         <div className={courseAndDate}>
