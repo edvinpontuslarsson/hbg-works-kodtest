@@ -8,24 +8,6 @@ main {
   flex-direction: column;
 }
 
-.company-section {
-  position: relative;
-}
-
-.company-section::before {
-  content: '';
-  background-color: var(--beige);
-  position: absolute;
-  height: 100%;
-  z-index: -1;
-  width: 200vw;
-  left: -100vw;
-}
-
-.course-and-date {
-  display: flex;
-}
-
 .course-and-date > .label-and-input {
   flex: 1;
 }
@@ -45,4 +27,41 @@ main {
 
 .phone-and-email > div:nth-child(2) {
   width: 58%;
+}
+
+.company-section {
+  position: relative;
+}
+
+.company-section::before {
+  content: '';
+  background-color: var(--beige);
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+  width: 200vw;
+  left: -100vw;
+}
+
+.course-and-date {
+  display: flex;
+}
+
+.participants-section {
+  position: relative;
+}
+
+.participants-section > h2 {
+  margin-top: 0px;
+  padding-top: 20px;
+}
+
+.participants-section::before {
+  content: '';
+  background-color: var(--grey);
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+  width: 200vw;
+  left: -100vw;
 }

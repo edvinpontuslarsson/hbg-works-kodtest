@@ -4,10 +4,11 @@ import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 
 // classnames
-const companySection = 'company-section';
 const courseAndDate = 'course-and-date';
 const labelAndInput = 'label-and-input';
 const phoneAndEmail = 'phone-and-email';
+const companySection = 'company-section';
+const participantsSection = 'participants-section';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -185,7 +186,7 @@ function App() {
         </div>
       </section>
       {invalidEmail && <p>Email is not valid</p>}
-      <div>
+      <section className={participantsSection}>
         <h2>Participants</h2>
         {participants.map((participant, index) => (
           <div key={participant.id}>
@@ -273,7 +274,7 @@ function App() {
         >
           Add a participant
         </button>
-      </div>
+      </section>
       <button
         onClick={() => {
           axios.post('/api', {
