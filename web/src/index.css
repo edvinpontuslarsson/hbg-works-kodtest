@@ -20,6 +20,8 @@ button {
   color: white;
   font-weight: 600;
   border-radius: 4px;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
 }
 
 button:disabled {
