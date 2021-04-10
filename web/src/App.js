@@ -9,18 +9,20 @@ import {
   useToasts,
 } from 'react-toast-notifications';
 
-// classnames
-const courseAndDate = 'course-and-date';
-const labelAndInput = 'label-and-input';
-const phoneAndEmail = 'phone-and-email';
-const companySection = 'company-section';
-const participantsSection = 'participants-section';
-const participantHeading = 'participant-heading';
-const errorMessage = 'error-message';
-const errorBorder = 'error-border';
-const submitButton = 'submit-button';
-const addParticipantButton = 'add-participant-button';
-const fetchApplications = 'fetch-applications';
+import ApplicationSubmitButton from './components/ApplicationSubmitButton';
+import {
+  courseAndDate,
+  labelAndInput,
+  phoneAndEmail,
+  companySection,
+  participantsSection,
+  participantHeading,
+  errorMessage,
+  errorBorder,
+  submitButton,
+  addParticipantButton,
+  fetchApplications,
+} from './utils/classNames';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -104,19 +106,7 @@ function App() {
       (course) => course.name === courseName
     )[0];
 
-  const handleSubmit = () => {
-    axios.post('/api/applications', {
-      courseApplication: {
-        courseId: selectedCourse.id,
-        courseName: selectedCourse.name,
-        courseDate: selectedDate,
-        companyName,
-        companyPhone,
-        companyEmail,
-        participants,
-      },
-    });
-  };
+  const handleSubmit = () => {};
 
   return (
     <ToastProvider>
@@ -341,9 +331,16 @@ function App() {
             Add a participant
           </button>
         </section>
-        <button
-          className={submitButton}
-          onClick={handleSubmit}
+        <ApplicationSubmitButton
+          courseApplication={{
+            courseId: selectedCourse.id,
+            courseName: selectedCourse.name,
+            courseDate: selectedDate,
+            companyName,
+            companyPhone,
+            companyEmail,
+            participants,
+          }}
           disabled={
             participants.some((item) =>
               isEmpty(item.name)
@@ -352,9 +349,7 @@ function App() {
             isEmpty(companyPhone) ||
             !isEmailValid(companyEmail)
           }
-        >
-          Submit application
-        </button>
+        />
 
         <button
           className={fetchApplications}
