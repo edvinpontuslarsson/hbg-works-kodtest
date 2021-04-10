@@ -41,6 +41,15 @@ app.get('/api/courses', async (req, res) => {
   res.json(coursesUniqueDates);
 });
 
+app.get('/api/applications', async (req, res) => {
+  try {
+    const applications = await CourseApplication.find();
+    res.json(applications);
+  } catch (error) {
+    res.status(500).json([]);
+  }
+});
+
 app.post('/api/applications', async (req, res) => {
   // TODO try catch wrap
   // can quickly test works by
