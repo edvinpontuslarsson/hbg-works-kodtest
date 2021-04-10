@@ -63,7 +63,7 @@ app.post('/api/applications', async (req, res) => {
   res.sendStatus(201);
 });
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.listen(port, () =>
   console.log('The server is running...')
