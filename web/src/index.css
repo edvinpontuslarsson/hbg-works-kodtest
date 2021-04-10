@@ -13,3 +13,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
 }
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
