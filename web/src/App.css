@@ -18,6 +18,7 @@ main {
 
 .phone-and-email {
   display: flex;
+  padding-top: 1rem;
 }
 
 .phone-and-email > div:first-child {
