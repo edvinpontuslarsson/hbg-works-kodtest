@@ -1,6 +1,8 @@
 const router = require('express').Router();
 
-router.get('/api/applications', async (req, res) => {
+const CourseApplication = require('../models/CourseApplication');
+
+router.get('/', async (req, res) => {
   try {
     const applications = await CourseApplication.find();
     res.json(applications);
@@ -9,7 +11,7 @@ router.get('/api/applications', async (req, res) => {
   }
 });
 
-router.post('/api/applications', async (req, res) => {
+router.post('/', async (req, res) => {
   // TODO try catch wrap
   // can quickly test works by
   // adding required field to schema not coming from client
