@@ -4,10 +4,7 @@ import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 import classnames from 'classnames';
 import ReactJson from 'react-json-view';
-import {
-  ToastProvider,
-  useToasts,
-} from 'react-toast-notifications';
+import { ToastProvider } from 'react-toast-notifications';
 
 import ApplicationSubmitButton from './components/ApplicationSubmitButton';
 import {
@@ -19,7 +16,6 @@ import {
   participantHeading,
   errorMessage,
   errorBorder,
-  submitButton,
   addParticipantButton,
   fetchApplications,
 } from './utils/classNames';
@@ -105,8 +101,6 @@ function App() {
     courses.filter(
       (course) => course.name === courseName
     )[0];
-
-  const handleSubmit = () => {};
 
   return (
     <ToastProvider
