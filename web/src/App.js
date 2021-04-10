@@ -33,7 +33,7 @@ function App() {
 
   const [applications, setApplications] = useState([]);
   const [hideApplications, setHideApplications] = useState(
-    false
+    true
   );
 
   const isEmpty = (string) => string === '';
@@ -369,6 +369,9 @@ function App() {
             ? 'View submitted applications'
             : 'Hide applications'}
         </a>
+      )}
+      {!hideApplications && (
+        <ReactJson src={applications} />
       )}
     </main>
   );
