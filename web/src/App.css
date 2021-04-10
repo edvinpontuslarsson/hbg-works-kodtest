@@ -33,6 +33,10 @@ main {
   position: relative;
 }
 
+.company-section > h2 {
+  padding-top: 20px;
+}
+
 .company-section::before {
   content: '';
   background-color: var(--beige);
