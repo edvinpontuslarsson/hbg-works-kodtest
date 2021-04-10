@@ -1,19 +1,15 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import classnames from 'classnames';
 
 import {
   courseAndDate,
   labelAndInput,
-  phoneAndEmail,
-  companySection,
-  errorMessage,
-  errorBorder,
 } from '../utils/classNames';
 import Participant from '../utils/Participant';
 import ApplicationSubmitButton from './ApplicationSubmitButton';
 import SubmittedApplications from './SubmittedApplications';
 import ParticipantsSection from './ParticipantsSection';
+import CompanySection from './CompanySection';
 
 const ApplicationForm = () => {
   const [courses, setCourses] = useState([]);
@@ -129,84 +125,22 @@ const ApplicationForm = () => {
           </select>
         </div>
       </div>
-      <section className={companySection}>
-        <h2>Company</h2>
-        <div className={labelAndInput}>
-          <label>NAME*</label>
-          <input
-            type="text"
-            value={companyName}
-            onBlur={() => {
-              isEmpty(companyName) && setInvalidName(true);
-            }}
-            onChange={(event) => {
-              setCompanyName(event.target.value);
-              invalidName &&
-                !isEmpty(event.target.value) &&
-                setInvalidName(false);
-            }}
-            className={classnames({
-              [`${errorBorder}`]: invalidName,
-            })}
-          />
-          {invalidName && (
-            <p className={errorMessage}>Name is required</p>
-          )}
-        </div>
-
-        <div className={phoneAndEmail}>
-          <div className={labelAndInput}>
-            <label>PHONE*</label>
-            <input
-              type="text"
-              value={companyPhone}
-              onBlur={() => {
-                isEmpty(companyPhone) &&
-                  setInvalidPhone(true);
-              }}
-              onChange={(event) => {
-                setCompanyPhone(event.target.value);
-                invalidPhone &&
-                  !isEmpty(event.target.value) &&
-                  setInvalidPhone(false);
-              }}
-              className={classnames({
-                [`${errorBorder}`]: invalidPhone,
-              })}
-            />
-            {invalidPhone && (
-              <p className={errorMessage}>
-                Phone is required
-              </p>
-            )}
-          </div>
-          <div className={labelAndInput}>
-            <label>E-MAIL*</label>
-            <input
-              type="text"
-              value={companyEmail}
-              onBlur={() => {
-                !isEmailValid(companyEmail) &&
-                  setInvalidEmail(true);
-              }}
-              onChange={(event) => {
-                setCompanyEmail(event.target.value);
-                invalidEmail &&
-                  isEmailValid(event.target.value) &&
-                  setInvalidEmail(false);
-              }}
-              className={classnames({
-                [`${errorBorder}`]: invalidEmail,
-              })}
-            />
-            {invalidEmail && (
-              <p className={errorMessage}>
-                Email is not valid
-              </p>
-            )}
-          </div>
-        </div>
-      </section>
+      <CompanySection
+        companyName={companyName}
+        setCompanyName={setCompanyName}
+        invalidName={invalidName}
+        setInvalidName={setInvalidName}
+        companyPhone={companyPhone}
+        setCompanyPhone={setCompanyPhone}
+        invalidPhone={invalidPhone}
+        setInvalidPhone={setInvalidPhone}
+        companyEmail={companyEmail}
+        setCompanyEmail={setCompanyEmail}
+        invalidEmail={invalidEmail}
+        setInvalidEmail={setInvalidEmail}
+        isEmpty={isEmpty}
+        isEmailValid={isEmailValid}
+      />
       <ParticipantsSection
         participants={participants}
         getParticipant={getParticipant}
