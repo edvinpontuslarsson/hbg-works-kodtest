@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 import classnames from 'classnames';
-import ReactJson from 'react-json-view';
 
-import ApplicationSubmitButton from './ApplicationSubmitButton';
 import {
   courseAndDate,
   labelAndInput,
@@ -15,8 +13,9 @@ import {
   errorMessage,
   errorBorder,
   addParticipantButton,
-  fetchApplications,
 } from '../utils/classNames';
+import ApplicationSubmitButton from './ApplicationSubmitButton';
+import SubmittedApplications from './SubmittedApplications';
 
 const ApplicationForm = () => {
   const [courses, setCourses] = useState([]);
@@ -352,20 +351,10 @@ const ApplicationForm = () => {
         }
         clearForm={clearForm}
       />
-
-      <button
-        className={fetchApplications}
-        onClick={() => {
-          axios.get('/api/applications').then((payload) => {
-            setApplications(payload.data);
-          });
-        }}
-      >
-        Fetch submitted applications
-      </button>
-      {applications.length > 0 && (
-        <ReactJson src={applications} />
-      )}
+      <SubmittedApplications
+        applications={applications}
+        setApplications={setApplications}
+      />
     </>
   );
 };
