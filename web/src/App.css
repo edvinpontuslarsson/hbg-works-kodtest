@@ -114,3 +114,37 @@ input {
   margin-bottom: 100px;
   width: 100%;
 }
+
+@media only screen and (max-width: 1025px) {
+  main {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .course-and-date {
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
+
+  .course-and-date > :first-child {
+    margin-right: 0px;
+    margin-bottom: 1rem;
+  }
+
+  .phone-and-email {
+    flex-direction: column;
+  }
+
+  .phone-and-email > div:first-child {
+    width: 100%;
+  }
+
+  .phone-and-email > div:nth-child(2) {
+    width: 100%;
+    padding-top: 1rem;
+  }
+
+  .add-participant-button {
+    width: 50%;
+  }
+}
