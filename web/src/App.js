@@ -109,7 +109,7 @@ function App() {
               setSelectedCourse(course);
             }}
           >
-            {courses?.map((course) => (
+            {courses.map((course) => (
               <option key={course.id} value={course.name}>
                 {course.name}
               </option>
