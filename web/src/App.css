@@ -141,6 +141,7 @@ input {
 
   .phone-and-email > div:nth-child(2) {
     width: 100%;
+    padding-top: 1rem;
   }
 
   .add-participant-button {
