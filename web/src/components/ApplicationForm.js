@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import {
-  courseAndDate,
-  labelAndInput,
-} from '../utils/classNames';
 import Participant from '../utils/Participant';
 import ApplicationSubmitButton from './ApplicationSubmitButton';
 import SubmittedApplications from './SubmittedApplications';
 import ParticipantsSection from './ParticipantsSection';
 import CompanySection from './CompanySection';
+import CourseSection from './CourseSection';
 
 const ApplicationForm = () => {
   const [courses, setCourses] = useState([]);
@@ -26,6 +23,8 @@ const ApplicationForm = () => {
   const [invalidEmail, setInvalidEmail] = useState(false);
 
   const [applications, setApplications] = useState([]);
+
+  // TODO function comments for functions
 
   const isEmpty = (string) => string === '';
 
@@ -47,8 +46,6 @@ const ApplicationForm = () => {
       setSelectedDate(coursesData[0]?.dates[0]);
     });
   }, []);
-
-  // TODO function comments for functions
 
   const clearForm = () => {
     setCompanyName('');
@@ -89,42 +86,14 @@ const ApplicationForm = () => {
 
   return (
     <>
-      <h2>Course</h2>
-      <div className={courseAndDate}>
-        <div className={labelAndInput}>
-          <label>NAME</label>
-          <select
-            value={selectedCourse.name}
-            onChange={(event) => {
-              const courseName = event.target.value;
-              const course = getCourse(courseName);
-
-              setSelectedCourse(course);
-            }}
-          >
-            {courses.map((course) => (
-              <option key={course.id} value={course.name}>
-                {course.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className={labelAndInput}>
-          <label>DATE</label>
-          <select
-            value={selectedDate}
-            onChange={(event) =>
-              setSelectedDate(event.target.value)
-            }
-          >
-            {selectedCourse?.dates?.map((date) => (
-              <option key={date} value={date}>
-                {date}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+      <CourseSection
+        courses={courses}
+        getCourse={getCourse}
+        selectedCourse={selectedCourse}
+        setSelectedCourse={setSelectedCourse}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
       <CompanySection
         companyName={companyName}
         setCompanyName={setCompanyName}
