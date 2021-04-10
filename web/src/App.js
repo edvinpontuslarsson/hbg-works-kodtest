@@ -3,6 +3,17 @@ import './App.css';
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 
+// classnames
+const courseAndDate = 'course-and-date';
+const labelAndInput = 'label-and-input';
+const phoneAndEmail = 'phone-and-email';
+const companySection = 'company-section';
+const participantsSection = 'participants-section';
+const participantHeading = 'participant-heading';
+const errorMessage = 'error-message';
+const submitButton = 'submit-button';
+const addParticipantButton = 'add-participant-button';
+
 function App() {
   const [courses, setCourses] = useState([]);
 
@@ -85,157 +96,200 @@ function App() {
 
   return (
     <main>
-      <div>
-        <h2>Course</h2>
-        <label>NAME</label>
-        <select
-          value={selectedCourse.name}
-          onChange={(event) => {
-            const courseName = event.target.value;
-            const course = getCourse(courseName);
+      <h2>Course</h2>
+      <div className={courseAndDate}>
+        <div className={labelAndInput}>
+          <label>NAME</label>
+          <select
+            value={selectedCourse.name}
+            onChange={(event) => {
+              const courseName = event.target.value;
+              const course = getCourse(courseName);
 
-            setSelectedCourse(course);
-          }}
-        >
-          {courses?.map((course) => (
-            <option key={course.id} value={course.name}>
-              {course.name}
-            </option>
-          ))}
-        </select>
-        <label>DATE</label>
-        <select
-          value={selectedDate}
-          onChange={(event) =>
-            setSelectedDate(event.target.value)
-          }
-        >
-          {selectedCourse?.dates?.map((date) => (
-            <option key={date} value={date}>
-              {date}
-            </option>
-          ))}
-        </select>
+              setSelectedCourse(course);
+            }}
+          >
+            {courses.map((course) => (
+              <option key={course.id} value={course.name}>
+                {course.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className={labelAndInput}>
+          <label>DATE</label>
+          <select
+            value={selectedDate}
+            onChange={(event) =>
+              setSelectedDate(event.target.value)
+            }
+          >
+            {selectedCourse?.dates?.map((date) => (
+              <option key={date} value={date}>
+                {date}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <div>
+      <section className={companySection}>
         <h2>Company</h2>
-        <label>NAME*</label>
-        <input
-          type="text"
-          value={companyName}
-          onBlur={() => {
-            isEmpty(companyName) && setInvalidName(true);
-          }}
-          onChange={(event) => {
-            setCompanyName(event.target.value);
-            invalidName &&
-              !isEmpty(event.target.value) &&
-              setInvalidName(false);
-          }}
-        />
-        {invalidName && <p>Name is required</p>}
-        <label>PHONE*</label>
-        <input
-          type="text"
-          value={companyPhone}
-          onBlur={() => {
-            isEmpty(companyPhone) && setInvalidPhone(true);
-          }}
-          onChange={(event) => {
-            setCompanyPhone(event.target.value);
-            invalidPhone &&
-              !isEmpty(event.target.value) &&
-              setInvalidPhone(false);
-          }}
-        />
-        {invalidPhone && <p>Phone is required</p>}
-        <label>E-MAIL*</label>
-        <input
-          type="text"
-          value={companyEmail}
-          onBlur={() => {
-            !isEmailValid(companyEmail) &&
-              setInvalidEmail(true);
-          }}
-          onChange={(event) => {
-            setCompanyEmail(event.target.value);
-            invalidEmail &&
-              isEmailValid(event.target.value) &&
-              setInvalidEmail(false);
-          }}
-        />
-      </div>
-      {invalidEmail && <p>Email is not valid</p>}
-      <div>
+        <div className={labelAndInput}>
+          <label>NAME*</label>
+          <input
+            type="text"
+            value={companyName}
+            onBlur={() => {
+              isEmpty(companyName) && setInvalidName(true);
+            }}
+            onChange={(event) => {
+              setCompanyName(event.target.value);
+              invalidName &&
+                !isEmpty(event.target.value) &&
+                setInvalidName(false);
+            }}
+          />
+          {invalidName && (
+            <p className={errorMessage}>Name is required</p>
+          )}
+        </div>
+
+        <div className={phoneAndEmail}>
+          <div className={labelAndInput}>
+            <label>PHONE*</label>
+            <input
+              type="text"
+              value={companyPhone}
+              onBlur={() => {
+                isEmpty(companyPhone) &&
+                  setInvalidPhone(true);
+              }}
+              onChange={(event) => {
+                setCompanyPhone(event.target.value);
+                invalidPhone &&
+                  !isEmpty(event.target.value) &&
+                  setInvalidPhone(false);
+              }}
+            />
+            {invalidPhone && (
+              <p className={errorMessage}>
+                Phone is required
+              </p>
+            )}
+          </div>
+
+          <div className={labelAndInput}>
+            <label>E-MAIL*</label>
+            <input
+              type="text"
+              value={companyEmail}
+              onBlur={() => {
+                !isEmailValid(companyEmail) &&
+                  setInvalidEmail(true);
+              }}
+              onChange={(event) => {
+                setCompanyEmail(event.target.value);
+                invalidEmail &&
+                  isEmailValid(event.target.value) &&
+                  setInvalidEmail(false);
+              }}
+            />
+            {invalidEmail && (
+              <p className={errorMessage}>
+                Email is not valid
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className={participantsSection}>
         <h2>Participants</h2>
         {participants.map((participant, index) => (
           <div key={participant.id}>
-            <h3>Participant #{index + 1}</h3>
-            {index !== 0 && (
-              <button
-                onClick={() => {
-                  handleRemoveParticipant(participant.id);
-                }}
-              >
-                X
-              </button>
-            )}
-            <label>NAME*</label>
-            <input
-              type="text"
-              value={participant.name}
-              name="name"
-              onBlur={() => {
-                const current = getParticipant(
-                  participant.id
-                );
-                !current.changed &&
-                  handleChangeParticipant(participant.id, {
-                    // mimics event interface
-                    target: {
-                      name: 'changed',
-                      value: true,
-                    },
-                  });
-              }}
-              onChange={(event) => {
-                handleChangeParticipant(
-                  participant.id,
-                  event
-                );
-              }}
-            />
-            {participants[index].changed &&
-              isEmpty(participants[index].name) && (
-                <p>Participant's name is required</p>
+            <div className={participantHeading}>
+              <h3>Participant #{index + 1}</h3>
+              {index !== 0 && (
+                <button
+                  onClick={() => {
+                    handleRemoveParticipant(participant.id);
+                  }}
+                >
+                  <h3>X</h3>
+                </button>
               )}
-            <label>PHONE</label>
-            <input
-              type="text"
-              value={participant.phone}
-              name="phone"
-              onChange={(event) => {
-                handleChangeParticipant(
-                  participant.id,
-                  event
-                );
-              }}
-            />
-            <label>E-MAIL</label>
-            <input
-              type="text"
-              value={participant.email}
-              name="email"
-              onChange={(event) => {
-                handleChangeParticipant(
-                  participant.id,
-                  event
-                );
-              }}
-            />
+            </div>
+            <div className={labelAndInput}>
+              <label>NAME*</label>
+              <input
+                type="text"
+                value={participant.name}
+                name="name"
+                onBlur={() => {
+                  const current = getParticipant(
+                    participant.id
+                  );
+                  !current.changed &&
+                    handleChangeParticipant(
+                      participant.id,
+                      {
+                        // mimics event interface
+                        target: {
+                          name: 'changed',
+                          value: true,
+                        },
+                      }
+                    );
+                }}
+                onChange={(event) => {
+                  handleChangeParticipant(
+                    participant.id,
+                    event
+                  );
+                }}
+              />
+              {participants[index].changed &&
+                isEmpty(participants[index].name) && (
+                  <p className={errorMessage}>
+                    Participant's name is required
+                  </p>
+                )}
+            </div>
+
+            <div className={phoneAndEmail}>
+              <div className={labelAndInput}>
+                <label>PHONE</label>
+                <input
+                  type="text"
+                  value={participant.phone}
+                  name="phone"
+                  onChange={(event) => {
+                    handleChangeParticipant(
+                      participant.id,
+                      event
+                    );
+                  }}
+                />
+              </div>
+              <div className={labelAndInput}>
+                <label>E-MAIL</label>
+                <input
+                  type="text"
+                  value={participant.email}
+                  name="email"
+                  onChange={(event) => {
+                    handleChangeParticipant(
+                      participant.id,
+                      event
+                    );
+                  }}
+                />
+              </div>
+            </div>
           </div>
         ))}
         <button
+          className={addParticipantButton}
           disabled={participants.some(
             (item) => item.name === ''
           )}
@@ -243,8 +297,9 @@ function App() {
         >
           Add a participant
         </button>
-      </div>
+      </section>
       <button
+        className={submitButton}
         onClick={() => {
           axios.post('/api', {
             courseApplication: {
