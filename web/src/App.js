@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
+import classnames from 'classnames';
 
 // classnames
 const courseAndDate = 'course-and-date';
@@ -11,6 +12,7 @@ const companySection = 'company-section';
 const participantsSection = 'participants-section';
 const participantHeading = 'participant-heading';
 const errorMessage = 'error-message';
+const errorBorder = 'error-border';
 const submitButton = 'submit-button';
 const addParticipantButton = 'add-participant-button';
 
@@ -148,6 +150,9 @@ function App() {
                 !isEmpty(event.target.value) &&
                 setInvalidName(false);
             }}
+            className={classnames({
+              [`${errorBorder}`]: invalidName,
+            })}
           />
           {invalidName && (
             <p className={errorMessage}>Name is required</p>
@@ -170,6 +175,9 @@ function App() {
                   !isEmpty(event.target.value) &&
                   setInvalidPhone(false);
               }}
+              className={classnames({
+                [`${errorBorder}`]: invalidPhone,
+              })}
             />
             {invalidPhone && (
               <p className={errorMessage}>
@@ -177,7 +185,6 @@ function App() {
               </p>
             )}
           </div>
-
           <div className={labelAndInput}>
             <label>E-MAIL*</label>
             <input
@@ -193,6 +200,9 @@ function App() {
                   isEmailValid(event.target.value) &&
                   setInvalidEmail(false);
               }}
+              className={classnames({
+                [`${errorBorder}`]: invalidEmail,
+              })}
             />
             {invalidEmail && (
               <p className={errorMessage}>
