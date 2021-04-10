@@ -11,6 +11,8 @@ const companySection = 'company-section';
 const participantsSection = 'participants-section';
 const participantHeading = 'participant-heading';
 const errorMessage = 'error-message';
+const submitButton = 'submit-button';
+const addParticipantButton = 'add-participant-button';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -287,6 +289,7 @@ function App() {
           </div>
         ))}
         <button
+          className={addParticipantButton}
           disabled={participants.some(
             (item) => item.name === ''
           )}
@@ -296,6 +299,7 @@ function App() {
         </button>
       </section>
       <button
+        className={submitButton}
         onClick={() => {
           axios.post('/api', {
             courseApplication: {

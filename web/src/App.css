@@ -67,6 +67,11 @@ main {
   padding-top: 20px;
 }
 
+.participants-section > button {
+  margin-top: 1.5rem;
+  margin-bottom: 40px;
+}
+
 .participants-section::before {
   content: '';
   background-color: var(--grey);
@@ -92,4 +97,15 @@ main {
   position: absolute;
   right: 0;
   color: red;
+}
+
+.add-participant-button {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.submit-button {
+  margin-top: 40px;
+  margin-bottom: 100px;
+  width: 100%;
 }
