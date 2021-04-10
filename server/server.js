@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const fs = require('fs');
 
+const getFile = require('./utils/utils').getFile;
+const uniqueDates = require('./utils/utils').uniqueDates;
 const CourseApplication = require('./models/CourseApplication');
 
 const app = express();
@@ -15,24 +16,6 @@ mongoose
   .connect('mongodb://mongo:27017/hbg-works-kodtest')
   .then(() => console.log('database connected'))
   .catch((err) => console.log(err));
-
-const getFile = (filePath) =>
-  new Promise((resolve, reject) => {
-    fs.readFile(filePath, (err, file) => {
-      if (err) return resolve([]);
-      resolve(JSON.parse(file));
-    });
-  });
-
-// TODO maybe instead feed into db,
-// then unique prop for dates
-const uniqueDates = (courses) =>
-  courses.map((course) => {
-    return {
-      ...course,
-      dates: [...new Set(course.dates)],
-    };
-  });
 
 app.get('/api/courses', async (req, res) => {
   // TODO try catch wrap
