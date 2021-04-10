@@ -2,7 +2,7 @@ const express = require('express');
 
 const getFile = require('./utils/utils').getFile;
 const uniqueDates = require('./utils/utils').uniqueDates;
-const connectToDatabase = require('./config/connectToDatabase');
+const db = require('./config/dbHandler');
 const CourseApplication = require('./models/CourseApplication');
 
 const app = express();
@@ -11,8 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // TODO global error handling
-
-connectToDatabase();
 
 app.get('/api/courses', async (req, res) => {
   // TODO try catch wrap
@@ -43,8 +41,16 @@ app.post('/api/applications', async (req, res) => {
   res.sendStatus(201);
 });
 
+db.on('error', (err) => {
+  console.error('db connection error', err);
+});
+
 const port = process.env.PORT || 8000;
 
-app.listen(port, () =>
-  console.log('The server is running...')
-);
+db.once('open', () => {
+  console.log('Database connected');
+
+  app.listen(port, () =>
+    console.log(`Server is running on port ${port}`)
+  );
+});
