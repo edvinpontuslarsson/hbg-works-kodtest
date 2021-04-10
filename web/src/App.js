@@ -9,6 +9,7 @@ const labelAndInput = 'label-and-input';
 const phoneAndEmail = 'phone-and-email';
 const companySection = 'company-section';
 const participantsSection = 'participants-section';
+const participantHeading = 'participant-heading';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -190,16 +191,18 @@ function App() {
         <h2>Participants</h2>
         {participants.map((participant, index) => (
           <div key={participant.id}>
-            <h3>Participant #{index + 1}</h3>
-            {index !== 0 && (
-              <button
-                onClick={() => {
-                  handleRemoveParticipant(participant.id);
-                }}
-              >
-                X
-              </button>
-            )}
+            <div className={participantHeading}>
+              <h3>Participant #{index + 1}</h3>
+              {index !== 0 && (
+                <button
+                  onClick={() => {
+                    handleRemoveParticipant(participant.id);
+                  }}
+                >
+                  <h3>X</h3>
+                </button>
+              )}
+            </div>
             <div className={labelAndInput}>
               <label>NAME*</label>
               <input
