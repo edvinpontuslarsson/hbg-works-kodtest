@@ -16,8 +16,12 @@ body {
 
 button {
   cursor: pointer;
+  background-color: var(--main-submit);
+  color: white;
+  font-weight: 600;
 }
 
 button:disabled {
   cursor: not-allowed;
+  opacity: 0.3;
 }
