@@ -6,6 +6,7 @@ import { submitButton } from '../utils/classNames';
 const ApplicationSubmitButton = ({
   courseApplication,
   disabled,
+  clearForm,
 }) => {
   const { addToast } = useToasts();
 
@@ -15,6 +16,7 @@ const ApplicationSubmitButton = ({
         courseApplication,
       })
       .then(() => {
+        clearForm();
         addToast('Application submitted', {
           appearance: 'success',
         });

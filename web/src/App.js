@@ -63,6 +63,26 @@ function App() {
     });
   }, []);
 
+  const clearForm = () => {
+    setCompanyName('');
+    setCompanyPhone('');
+    setCompanyEmail('');
+    setInvalidName(false);
+    setInvalidPhone(false);
+    setInvalidEmail(false);
+
+    // TODO use reusable object/class here instead
+    setParticipants([
+      {
+        id: uuid(),
+        name: '',
+        phone: '',
+        email: '',
+        changed: false,
+      },
+    ]);
+  };
+
   const handleAddParticipant = () => {
     setParticipants([
       ...participants,
@@ -346,6 +366,7 @@ function App() {
             isEmpty(companyPhone) ||
             !isEmailValid(companyEmail)
           }
+          clearForm={clearForm}
         />
 
         <button
