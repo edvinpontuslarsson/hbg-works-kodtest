@@ -52,6 +52,8 @@ const ApplicationForm = () => {
     });
   }, []);
 
+  // TODO function comments for functions
+
   const clearForm = () => {
     setCompanyName('');
     setCompanyPhone('');
