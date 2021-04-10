@@ -8,6 +8,10 @@ input {
   padding: 0.5rem;
 }
 
+.error-border {
+  border-color: red;
+}
+
 .label-and-input {
   display: flex;
   flex-direction: column;
