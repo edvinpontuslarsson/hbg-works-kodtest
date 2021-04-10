@@ -147,8 +147,11 @@ function App() {
                 setInvalidName(false);
             }}
           />
+          {invalidName && (
+            <p className={errorMessage}>Name is required</p>
+          )}
         </div>
-        {invalidName && <p className={errorMessage}>Name is required</p>}
+
         <div className={phoneAndEmail}>
           <div className={labelAndInput}>
             <label>PHONE*</label>
@@ -166,8 +169,13 @@ function App() {
                   setInvalidPhone(false);
               }}
             />
+            {invalidPhone && (
+              <p className={errorMessage}>
+                Phone is required
+              </p>
+            )}
           </div>
-          {invalidPhone && <p className={errorMessage}>Phone is required</p>}
+
           <div className={labelAndInput}>
             <label>E-MAIL*</label>
             <input
@@ -184,10 +192,15 @@ function App() {
                   setInvalidEmail(false);
               }}
             />
+            {invalidEmail && (
+              <p className={errorMessage}>
+                Email is not valid
+              </p>
+            )}
           </div>
         </div>
       </section>
-      {invalidEmail && <p className={errorMessage}>Email is not valid</p>}
+
       <section className={participantsSection}>
         <h2>Participants</h2>
         {participants.map((participant, index) => (
@@ -233,11 +246,14 @@ function App() {
                   );
                 }}
               />
+              {participants[index].changed &&
+                isEmpty(participants[index].name) && (
+                  <p className={errorMessage}>
+                    Participant's name is required
+                  </p>
+                )}
             </div>
-            {participants[index].changed &&
-              isEmpty(participants[index].name) && (
-                <p className={errorMessage}>Participant's name is required</p>
-              )}
+
             <div className={phoneAndEmail}>
               <div className={labelAndInput}>
                 <label>PHONE</label>
