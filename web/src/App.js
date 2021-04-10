@@ -343,34 +343,20 @@ function App() {
       >
         Submit application
       </button>
-      {applications.length === 0 ? (
-        <a
-          href="#"
-          onClick={(event) => {
-            event.preventDefault();
-            axios
-              .get('/api/applications')
-              .then((payload) => {
-                setApplications(payload.data);
-              });
-          }}
-        >
-          View submitted applications
-        </a>
-      ) : (
-        <a
-          href="#"
-          onClick={(event) => {
-            event.preventDefault();
-            setHideApplications(!hideApplications);
-          }}
-        >
-          {hideApplications
-            ? 'View submitted applications'
-            : 'Hide applications'}
-        </a>
-      )}
-      {!hideApplications && (
+
+      <a
+        href="#"
+        onClick={(event) => {
+          event.preventDefault();
+          axios.get('/api/applications').then((payload) => {
+            setApplications(payload.data);
+          });
+        }}
+      >
+        Fetch submitted applications
+      </a>
+
+      {applications.length > 0 && (
         <ReactJson src={applications} />
       )}
     </main>
