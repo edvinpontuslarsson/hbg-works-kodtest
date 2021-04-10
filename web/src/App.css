@@ -3,6 +3,11 @@ main {
   margin-right: 25%;
 }
 
+select,
+input {
+  padding: 0.5rem;
+}
+
 .label-and-input {
   display: flex;
   flex-direction: column;
