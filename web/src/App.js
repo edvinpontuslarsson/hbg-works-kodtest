@@ -16,6 +16,7 @@ const errorMessage = 'error-message';
 const errorBorder = 'error-border';
 const submitButton = 'submit-button';
 const addParticipantButton = 'add-participant-button';
+const fetchApplications = 'fetch-applications';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -32,9 +33,6 @@ function App() {
   const [invalidEmail, setInvalidEmail] = useState(false);
 
   const [applications, setApplications] = useState([]);
-  const [hideApplications, setHideApplications] = useState(
-    true
-  );
 
   const isEmpty = (string) => string === '';
 
@@ -344,18 +342,16 @@ function App() {
         Submit application
       </button>
 
-      <a
-        href="#"
-        onClick={(event) => {
-          event.preventDefault();
+      <button
+        className={fetchApplications}
+        onClick={() => {
           axios.get('/api/applications').then((payload) => {
             setApplications(payload.data);
           });
         }}
       >
         Fetch submitted applications
-      </a>
-
+      </button>
       {applications.length > 0 && (
         <ReactJson src={applications} />
       )}
