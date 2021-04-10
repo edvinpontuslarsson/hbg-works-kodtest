@@ -46,7 +46,7 @@ app.get('/api/applications', async (req, res) => {
     const applications = await CourseApplication.find();
     res.json(applications);
   } catch (error) {
-    res.status(500).json([]);
+    res.sendStatus(500);
   }
 });
 
