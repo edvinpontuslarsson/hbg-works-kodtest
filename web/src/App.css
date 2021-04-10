@@ -142,4 +142,8 @@ input {
   .phone-and-email > div:nth-child(2) {
     width: 100%;
   }
+
+  .add-participant-button {
+    width: 50%;
+  }
 }
