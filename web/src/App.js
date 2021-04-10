@@ -67,9 +67,6 @@ function App() {
     setCompanyName('');
     setCompanyPhone('');
     setCompanyEmail('');
-    setInvalidName(false);
-    setInvalidPhone(false);
-    setInvalidEmail(false);
 
     // TODO use reusable object/class here instead
     setParticipants([
