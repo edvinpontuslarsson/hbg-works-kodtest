@@ -19,6 +19,7 @@ button {
   background-color: var(--main-submit);
   color: white;
   font-weight: 600;
+  border-radius: 4px;
 }
 
 button:disabled {
