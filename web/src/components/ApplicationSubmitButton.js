@@ -20,6 +20,11 @@ const ApplicationSubmitButton = ({
         addToast('Application submitted', {
           appearance: 'success',
         });
+      })
+      .catch(() => {
+        addToast('Submission failed', {
+          appearance: 'error',
+        });
       });
   };
 
