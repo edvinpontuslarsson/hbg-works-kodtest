@@ -1,8 +1,8 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
 const getFile = require('./utils/utils').getFile;
 const uniqueDates = require('./utils/utils').uniqueDates;
+const connectToDatabase = require('./config/connectToDatabase');
 const CourseApplication = require('./models/CourseApplication');
 
 const app = express();
@@ -12,10 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // TODO global error handling
 
-mongoose
-  .connect('mongodb://mongo:27017/hbg-works-kodtest')
-  .then(() => console.log('database connected'))
-  .catch((err) => console.log(err));
+connectToDatabase();
 
 app.get('/api/courses', async (req, res) => {
   // TODO try catch wrap
