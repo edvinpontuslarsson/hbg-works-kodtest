@@ -5,9 +5,11 @@ const routes = require('./routes/routes');
 
 const server = express();
 
+// middleware settings to handle incoming data
 server.use(express.json());
 server.use(express.urlencoded());
 
+// to use routes directory for http requests
 server.use('/api', routes);
 
 db.on('error', (err) => {

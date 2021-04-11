@@ -15,6 +15,24 @@ const courseApplicationSchema = mongoose.Schema({
   ],
 });
 
+/**
+ * Mongoose model, courseId has type Number, participants has type object[],
+ * all other object properties have type String.
+ * moddel structure: {
+    courseId,
+    courseName,
+    companyName,
+    companyPhone,
+    companyEmail,
+      participants: [
+          {
+            name,
+            phone?,
+            email?,
+          },
+      ],
+    }
+ */
 const CourseApplication = mongoose.model(
   'CourseApplication',
   courseApplicationSchema

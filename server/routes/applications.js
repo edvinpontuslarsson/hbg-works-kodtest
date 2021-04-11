@@ -3,6 +3,7 @@ const router = require('express').Router();
 const CourseApplication = require('../models/CourseApplication');
 
 router.get('/', async (req, res) => {
+  // responds with all CourseApplications stored in database
   try {
     const applications = await CourseApplication.find();
     res.json(applications);
@@ -12,6 +13,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  // stores submitted CourseApplication data in database
   try {
     const payload = req.body.courseApplication;
 

@@ -1,11 +1,15 @@
 const router = require('express').Router();
 
-const getFile = require('../utils/utils').getFile;
+const getJsonFileContent = require('../utils/utils')
+  .getJsonFileContent;
 const uniqueDates = require('../utils/utils').uniqueDates;
 
 router.get('/', async (req, res) => {
+  // responds with courses' data based on file system json file
   try {
-    const courses = await getFile('kurser/kurser.json');
+    const courses = await getJsonFileContent(
+      'kurser/kurser.json'
+    );
     const coursesUniqueDates = uniqueDates(courses);
     res.json(coursesUniqueDates);
   } catch (error) {
