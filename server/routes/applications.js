@@ -17,6 +17,13 @@ router.post('/', async (req, res) => {
   try {
     const payload = req.body.courseApplication;
 
+    if (
+      !payload.participants ||
+      payload.participants.length < 1
+    ) {
+      throw new Error();
+    }
+
     const courseApplication = new CourseApplication(
       payload
     );
@@ -25,7 +32,7 @@ router.post('/', async (req, res) => {
 
     res.sendStatus(201);
   } catch (error) {
-    res.sendStatus(500);
+    res.sendStatus(400);
   }
 });
 
