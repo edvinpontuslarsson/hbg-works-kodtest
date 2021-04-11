@@ -3,7 +3,7 @@ const fs = require('fs');
 const getFile = (filePath) =>
   new Promise((resolve, reject) => {
     fs.readFile(filePath, (err, file) => {
-      if (err) return resolve([]);
+      if (err) throw new Error();
       resolve(JSON.parse(file));
     });
   });
