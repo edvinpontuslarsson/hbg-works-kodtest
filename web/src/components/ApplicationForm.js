@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Participant from '../utils/Participant';
@@ -8,6 +8,9 @@ import ParticipantsSection from './ParticipantsSection';
 import CompanySection from './CompanySection';
 import CourseSection from './CourseSection';
 
+/**
+ * Component that contains all sections of the application form
+ */
 const ApplicationForm = () => {
   const [courses, setCourses] = useState([]);
 
@@ -24,10 +27,16 @@ const ApplicationForm = () => {
 
   const [applications, setApplications] = useState([]);
 
-  // TODO function comments for functions
-
+  /**
+   * @param {string} string
+   * @returns {boolean} string is empty
+   */
   const isEmpty = (string) => string === '';
 
+  /**
+   * @param {string} email
+   * @returns {boolean} email is valid
+   */
   const isEmailValid = (email) =>
     /\S+@\S+\.\S+/.test(email);
 
@@ -47,6 +56,9 @@ const ApplicationForm = () => {
     });
   }, []);
 
+  /**
+   * Resets state's company name, phone and email to default, empty strings
+   */
   const clearForm = () => {
     setCompanyName('');
     setCompanyPhone('');
@@ -54,13 +66,26 @@ const ApplicationForm = () => {
     setParticipants([new Participant()]);
   };
 
+  /**
+   * Adds a new instance of Particpant to participants in state
+   */
   const handleAddParticipant = () => {
     setParticipants([...participants, new Participant()]);
   };
 
+  /**
+   * @param {string} id
+   * @returns {Participant} Participant instance based on id
+   */
   const getParticipant = (id) =>
     participants.filter((item) => item.id === id)[0];
 
+  /**
+   * Sets the Participant's property key from provided event.target.name to provided event.target.value,
+   * example params: ('id', { target: { name: 'email', value: 'john.doe@mail.com' }})
+   * @param {string} id Participant instance id
+   * @param { { target: { name: string, value: string } } } event
+   */
   const handleChangeParticipant = (id, event) => {
     const updatedParticipants = participants.map((item) =>
       item.id === id
@@ -73,12 +98,20 @@ const ApplicationForm = () => {
     setParticipants(updatedParticipants);
   };
 
+  /**
+   * Removes the Participant isntance from participants in state
+   * @param {string} id 
+   */
   const handleRemoveParticipant = (id) => {
     setParticipants(
       participants.filter((item) => item.id !== id)
     );
   };
 
+  /**
+   * @param {string} courseName 
+   * @returns {string} course object in state from course name
+   */
   const getCourse = (courseName) =>
     courses.filter(
       (course) => course.name === courseName
