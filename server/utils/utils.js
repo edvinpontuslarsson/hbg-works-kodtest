@@ -12,6 +12,10 @@ const getJsonFileContent = (filePath) =>
     });
   });
 
+/**
+ * @param {Array<object>} courses from json file
+ * @returns {Array<object>} new array with course objects except duplicate dates are excluded
+ */
 const uniqueDates = (courses) =>
   courses.map((course) => {
     return {
