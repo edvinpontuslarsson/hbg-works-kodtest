@@ -12,16 +12,19 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  // TODO try catch wrap
-  // can quickly test works by
-  // adding required field to schema not coming from client
-  const payload = req.body.courseApplication;
+  try {
+    const payload = req.body.courseApplication;
 
-  const courseApplication = new CourseApplication(payload);
+    const courseApplication = new CourseApplication(
+      payload
+    );
 
-  await courseApplication.save();
+    await courseApplication.save();
 
-  res.sendStatus(201);
+    res.sendStatus(201);
+  } catch (error) {
+    res.sendStatus(500);
+  }
 });
 
 module.exports = router;
