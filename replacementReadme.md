@@ -3,6 +3,8 @@
 ## Table of contents
 
 * [Instructions](#instructions)
+* [Solution Description](#solution-description)
+* [Tools used](#tools-used)
 
 ## Instructions
 
@@ -24,6 +26,25 @@ http://localhost:3000/
 
 ## Solution Description
 
+A web form
+
+### Extra features
+
+* Responsive design
+* Form validation
+* Participant fields can be removed
+* Submitted applications stored in database can be viewed by clicking a link at the bottom of the page
+
+### Directories
+
+#### Server
+
+The server directory contains the backend source code. 
+
+#### Web Client
+
+The source code for the web client React App is in the directory web/src/
+
 ## Tools used
 
 * __Virtualization__: Docker, Docker Compose
@@ -31,4 +52,4 @@ http://localhost:3000/
 * __Programming language backend and frontend:__ JavaScript with code standard ECMAScript 2018
 * __Code formatter__: prettier, see the file prettier.config.js in this root directory for formatting settings used
 * __Backend runtime environment__: Node.js
-* __Frameworks/libraries__: Express.js as backend framework. React.js as main frontend library.  
+* __Frameworks/libraries__: Express.js as backend framework. React.js as main frontend library.
