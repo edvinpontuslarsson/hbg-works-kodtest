@@ -5,6 +5,7 @@ const getJsonFileContent = require('../utils/utils')
 const uniqueDates = require('../utils/utils').uniqueDates;
 
 router.get('/', async (req, res) => {
+  // responds with courses' data based on file system json file
   try {
     const courses = await getJsonFileContent(
       'kurser/kurser.json'
