@@ -1,6 +1,10 @@
 const fs = require('fs');
 
-const getFile = (filePath) =>
+/**
+ * @param {string} filePath
+ * @returns {Promise<Array | object>} parsed json content
+ */
+const getJsonFileContent = (filePath) =>
   new Promise((resolve, reject) => {
     fs.readFile(filePath, (err, file) => {
       if (err) throw new Error();
@@ -16,4 +20,4 @@ const uniqueDates = (courses) =>
     };
   });
 
-module.exports = { getFile, uniqueDates };
+module.exports = { getJsonFileContent, uniqueDates };
