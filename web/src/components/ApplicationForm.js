@@ -100,7 +100,7 @@ const ApplicationForm = () => {
 
   /**
    * Removes the Participant isntance from participants in state
-   * @param {string} id 
+   * @param {string} id
    */
   const handleRemoveParticipant = (id) => {
     setParticipants(
@@ -109,7 +109,7 @@ const ApplicationForm = () => {
   };
 
   /**
-   * @param {string} courseName 
+   * @param {string} courseName
    * @returns {string} course object in state from course name
    */
   const getCourse = (courseName) =>
