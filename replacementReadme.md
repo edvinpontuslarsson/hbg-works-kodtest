@@ -26,14 +26,14 @@ http://localhost:3000/
 
 ## Solution Description
 
-A web form
+A web form for course applications. 1 or more participants needs to be added. 
 
 ### Extra features
 
 * Responsive design
 * Form validation
-* Participant fields can be removed
-* Submitted applications stored in database can be viewed by clicking a link at the bottom of the page
+* Participant fields can be removed if more than 1 participant has been added
+* Submitted applications stored in database can be viewed by clicking a button at the bottom of the page
 
 ### Directories
 
