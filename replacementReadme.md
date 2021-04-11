@@ -1,0 +1,1 @@
+kodstandard: ECMAScript 2018
