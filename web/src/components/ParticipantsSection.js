@@ -24,7 +24,7 @@ const ParticipantsSection = ({
       <div key={participant.id}>
         <div className={participantHeading}>
           <h3>Participant #{index + 1}</h3>
-          {index !== 0 && (
+          {participants.length !== 1 && (
             <button
               onClick={() => {
                 handleRemoveParticipant(participant.id);
