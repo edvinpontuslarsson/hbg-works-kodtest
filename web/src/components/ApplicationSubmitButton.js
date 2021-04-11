@@ -10,6 +10,11 @@ const ApplicationSubmitButton = ({
 }) => {
   const { addToast } = useToasts();
 
+  /**
+   * Makes http post request with the course application object to the api,
+   * invokes display of toast message showing if the submission went successfully or failed,
+   * clears/resets the form if the submission went successfully
+   */
   const handleSubmit = () => {
     axios
       .post('/api/applications', {
