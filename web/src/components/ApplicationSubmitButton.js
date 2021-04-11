@@ -3,6 +3,12 @@ import { useToasts } from 'react-toast-notifications';
 
 import { submitButton } from '../utils/classNames';
 
+/**
+ * @param {object} param object
+ * @param {object} param.courseApplication application data to post to store in database
+ * @param {boolean} param.disabled conditions for the button being disabled
+ * @param {Function} param.clearForm function to clear/reset form
+ */
 const ApplicationSubmitButton = ({
   courseApplication,
   disabled,
