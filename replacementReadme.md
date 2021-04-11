@@ -26,7 +26,7 @@ http://localhost:3000/
 
 ## Solution Description
 
-A web form for course applications. 1 or more participants needs to be added. 
+A web form for course applications for companies. 1 or more participants needs to be added. 
 
 ### Extra features
 
