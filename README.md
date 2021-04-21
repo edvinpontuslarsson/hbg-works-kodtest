@@ -61,7 +61,8 @@ The source code for the web client React App is in the directory web/src/
 ## Tools used
 
 - **Virtualization**: Docker, Docker Compose
-- **Database**: MongoDB
+- **Database**: MySQL
+- **TODO**: Use Wordpress for API instead of Node.js
 - **Programming language backend and frontend:** JavaScript with code standard ECMAScript 2018
 - **Code formatter**: prettier, see the file prettier.config.js in this root directory for formatting settings used
 - **Backend runtime environment**: Node.js
