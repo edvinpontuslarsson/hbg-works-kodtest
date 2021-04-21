@@ -1,32 +1,51 @@
-# the docker setup has been especially
-# inspired by the one used in this repository:
-# https://github.com/mrcoles/node-react-docker-compose
+# this yml config is mostly copied from this gist:
+# https://gist.github.com/bradtraversy/faa8de544c62eef3f31de406982f1d42
 
 version: '3'
+
 services:
-  mongo:
-    image: mongo
-    ports:
-      - '27017:27017'
-  server:
-    build:
-      context: ./server/
+  # Database
+  db:
+    image: mysql:5.7
     volumes:
-      - ./server/:/usr/app
-      - /usr/app/node_modules
-    ports:
-      - '8000:8000'
-    external_links:
-      - mongo
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    networks:
+      - wpsite
+  # phpmyadmin
+  phpmyadmin:
     depends_on:
-      - mongo
-  web:
-    build:
-      context: ./web/
-    volumes:
-      - ./web/:/usr/app
-      - /usr/app/node_modules
-    depends_on:
-      - server
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
     ports:
-      - '3000:3000'
+      - '8080:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: password 
+    networks:
+      - wpsite
+  # Wordpress
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - '8000:80'
+    restart: always
+    volumes: ['./:/var/www/html']
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    networks:
+      - wpsite
+networks:
+  wpsite:
+volumes:
+  db_data:
