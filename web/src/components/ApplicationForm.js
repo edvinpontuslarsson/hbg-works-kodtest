@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { coursesUniqueDates } from '../utils/tempCourses';
+
 import Participant from '../utils/Participant';
 import ApplicationSubmitButton from './ApplicationSubmitButton';
 import SubmittedApplications from './SubmittedApplications';
@@ -45,15 +47,20 @@ const ApplicationForm = () => {
   ]);
 
   useEffect(() => {
-    axios.get('/api/courses').then((payload) => {
-      const coursesData = payload.data;
+    // TODO fetch from api again later
+    // axios.get('/api/courses').then((payload) => {
+    //   const coursesData = payload.data;
+    //   setCourses(coursesData);
+    //   // initial default course selection
+    //   setSelectedCourse(coursesData[0]);
+    //   setSelectedDate(coursesData[0]?.dates[0]);
+    // });
 
-      setCourses(coursesData);
-
-      // initial default course selection
-      setSelectedCourse(coursesData[0]);
-      setSelectedDate(coursesData[0]?.dates[0]);
-    });
+    const coursesData = coursesUniqueDates;
+    setCourses(coursesData);
+    // initial default course selection
+    setSelectedCourse(coursesData[0]);
+    setSelectedDate(coursesData[0]?.dates[0]);
   }, []);
 
   /**
