@@ -18,6 +18,11 @@ When finished, the web client will be available on port 3000
 
 http://localhost:3000/
 
+### Get started
+
+Define a secret for the JWT_AUTH_SECRET_KEY in the file server/wp-config.php, like this:
+`define('JWT_AUTH_SECRET_KEY', 'your-secret-here');`
+
 ### Tear down
 
 `docker-compose down --volumes`
