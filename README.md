@@ -20,7 +20,7 @@ http://localhost:3000/
 
 ### Tear down
 
-`docker-compose down`
+`docker-compose down --volumes`
 
 ### Rebuild
 
