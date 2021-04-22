@@ -60,6 +60,7 @@ The source code for the web client React App is in the directory web/src/
 
 ## Tools used
 
+- **Docker and Wordpress configuration starter used**: https://github.com/postlight/headless-wp-starter
 - **Virtualization**: Docker, Docker Compose
 - **Database**: MySQL
 - **TODO**: Use Wordpress for API instead of Node.js
