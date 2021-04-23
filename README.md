@@ -8,6 +8,18 @@
 
 ## Instructions
 
+### Server setup
+
+Make a copy of the .env.example file in the server directory in the same server directory and rename the filename to .env
+
+Add a value to the line: DB_PASSWORD= 
+
+`docker-compose up -d --build site`
+
+`docker-compose run artisan key:generate`
+
+`docker-compose run --rm composer install`
+
 ### Run with Docker
 
 Be navigated to this root directory in a terminal and enter command:
