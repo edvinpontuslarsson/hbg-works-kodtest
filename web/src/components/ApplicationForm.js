@@ -45,15 +45,17 @@ const ApplicationForm = () => {
   ]);
 
   useEffect(() => {
-    axios.get('/api/courses').then((payload) => {
-      const coursesData = payload.data;
+    // TODO http req again
+    // axios.get('/api/courses').then((payload) => {
+    //   const coursesData = payload.data;
 
-      setCourses(coursesData);
+    //   setCourses(coursesData);
 
-      // initial default course selection
-      setSelectedCourse(coursesData[0]);
-      setSelectedDate(coursesData[0]?.dates[0]);
-    });
+    //   // initial default course selection
+    //   setSelectedCourse(coursesData[0]);
+    //   setSelectedDate(coursesData[0]?.dates[0]);
+    // });
+    console.log(`what's happening?`)
   }, []);
 
   /**
