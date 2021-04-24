@@ -14,11 +14,16 @@ Make a copy of the .env.example file in the server directory in the same server 
 
 Add a value to the line: DB_PASSWORD= 
 
+TO autogenerate model file
+`docker-compose run artisan make:model <ModelName> --migration`
+
 `docker-compose up`
 
 `docker-compose up -d --build site`
 
 `docker-compose run artisan key:generate`
+
+`docker-compose run artisan migrate`
 
 `docker-compose run --rm composer install`
 
