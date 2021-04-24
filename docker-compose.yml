@@ -39,10 +39,6 @@ services:
     ports:
       - 3306:3306
     environment:
-      # TODO these should be in env, 
-      # have root env too,
-      # should of course be the same as in laravel env
-      # put back mysql stuff
       MYSQL_DATABASE: homestead
       MYSQL_USER: homestead
       MYSQL_PASSWORD: secret

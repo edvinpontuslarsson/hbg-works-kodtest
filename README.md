@@ -10,7 +10,10 @@
 
 ### Server setup
 
-TO autogenerate model file
+To migrate tables to database
+`docker-compose exec php php /var/www/html/artisan migrate`
+
+To autogenerate model file
 `docker-compose run artisan make:model <ModelName> --migration`
 
 `docker-compose up`
