@@ -1,5 +1,7 @@
 # HBG Works Code Test Solution
 
+## This branch for a wordpress version does not work yet
+
 ## Table of contents
 
 - [Instructions](#instructions)
