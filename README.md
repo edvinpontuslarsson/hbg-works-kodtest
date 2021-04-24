@@ -10,10 +10,6 @@
 
 ### Server setup
 
-Make a copy of the .env.example file in the server directory in the same server directory and rename the filename to .env
-
-Add a value to the line: DB_PASSWORD= 
-
 TO autogenerate model file
 `docker-compose run artisan make:model <ModelName> --migration`
 
@@ -26,6 +22,12 @@ TO autogenerate model file
 `docker-compose run artisan migrate`
 
 `docker-compose run --rm composer install`
+
+### Sensitive environment variables
+
+You are recommended to change all passwords and other sensitive environment variables in the root directory's docker-compose.yml file as well as in the server/.env file. 
+
+You could have the sensitive variables in docker-compose.yml in a .env file. Then add .env to .gitignore for all directories. 
 
 ### Run with Docker
 
