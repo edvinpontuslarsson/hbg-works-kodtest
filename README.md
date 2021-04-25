@@ -24,8 +24,6 @@ To autogenerate file
 
 `docker-compose run artisan key:generate`
 
-`docker-compose run artisan migrate`
-
 `docker-compose run --rm composer install`
 
 ### Sensitive environment variables
