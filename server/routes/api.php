@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CourseApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +16,17 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/products', [ProductController::class, 'index']);
+// TODO get courses from here too
 
-Route::post('/products', [ProductController::class, 'store']);
+Route::get(
+    '/applications', 
+    [CourseApplicationController::class, 'index']
+);
+
+Route::post(
+    '/applications', 
+    [CourseApplicationController::class, 'store']
+);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

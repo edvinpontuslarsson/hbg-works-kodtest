@@ -22,30 +22,31 @@ const ApplicationSubmitButton = ({
    * clears/resets the form if the submission went successfully
    */
   const handleSubmit = () => {
-    // axios
-    //   .post('/api/applications', {
-    //     courseApplication,
-    //   })
-    //   .then(() => {
-    //     clearForm();
-    //     addToast('Application submitted', {
-    //       appearance: 'success',
-    //     });
-    //   })
-    //   .catch(() => {
-    //     addToast('Submission failed', {
-    //       appearance: 'error',
-    //     });
-    //   });
+    // TODO this just temp
+    delete courseApplication.participants;
+
+    // console.log(courseApplication)
+
     axios
-      .post('http://localhost/api/products', {
-        'name': new Date().toLocaleString(),
-        'slug': new Date().toLocaleString(),
-        'description': new Date().toLocaleString(),
-        'price': 99.99
+      .post(
+        'http://localhost/api/applications',
+        courseApplication
+      )
+      .then((result) => {
+        console.log(result);
+
+        clearForm();
+        addToast('Application submitted', {
+          appearance: 'success',
+        });
       })
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.error(error);
+
+        addToast('Submission failed', {
+          appearance: 'error',
+        });
+      });
   };
 
   return (

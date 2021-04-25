@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\CourseApplication;
 
-class ProductController extends Controller
+class CourseApplicationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        return CourseApplication::all();
     }
 
     /**
@@ -25,12 +25,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'slug' => 'required',
-            'price'  => 'required'
-        ]);
-
-        return Product::create($request->all());
+        // TODO adjust this to also add participants
+        return CourseApplication::create($request->all());
     }
 }

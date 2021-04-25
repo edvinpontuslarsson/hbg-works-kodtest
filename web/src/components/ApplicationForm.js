@@ -44,6 +44,7 @@ const ApplicationForm = () => {
     new Participant(),
   ]);
 
+  // TODO get from serverside, read from file
   const coursesData = [
     {
       id: 1,
@@ -100,7 +101,7 @@ const ApplicationForm = () => {
     // });
 
     axios
-      .get('http://localhost/api/products')
+      .get('http://localhost/api/applications')
       .then((payload) => {
         console.log(payload);
       });

@@ -13,6 +13,8 @@
 To migrate tables to database
 `docker-compose exec php php /var/www/html/artisan migrate`
 
+`docker-compose run artisan config:cache`
+
 To autogenerate file
 `docker-compose run artisan make:model <ModelName> --migration`
 
@@ -23,8 +25,6 @@ To autogenerate file
 `docker-compose up -d --build site`
 
 `docker-compose run artisan key:generate`
-
-`docker-compose run artisan migrate`
 
 `docker-compose run --rm composer install`
 
