@@ -3,7 +3,8 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
+# you are recommended to have the env file in gitignore
+# .env
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml

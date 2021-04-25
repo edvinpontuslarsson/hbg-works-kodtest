@@ -4,12 +4,23 @@ networks:
   laravel:
 
 services:
+  web:
+    build:
+      context: ./web/
+    volumes:
+      - ./web/:/usr/app
+      - /usr/app/node_modules
+    container_name: web
+    ports:
+      - '3000:3000'
+
   site:
     build:
       context: .
       dockerfile: nginx.dockerfile
     container_name: nginx
     ports:
+      # TODO try 8080:80, or reverse?, then try proxy react
       - 80:80
     volumes:
       - ./server:/var/www/html:delegated

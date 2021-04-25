@@ -8,6 +8,32 @@
 
 ## Instructions
 
+### Server setup
+
+To migrate tables to database
+`docker-compose exec php php /var/www/html/artisan migrate`
+
+To autogenerate file
+`docker-compose run artisan make:model <ModelName> --migration`
+
+`docker-compose run artisan make:controller <ControllerName> --api`
+
+`docker-compose up`
+
+`docker-compose up -d --build site`
+
+`docker-compose run artisan key:generate`
+
+`docker-compose run artisan migrate`
+
+`docker-compose run --rm composer install`
+
+### Sensitive environment variables
+
+You are recommended to change all passwords and other sensitive environment variables in the root directory's docker-compose.yml file as well as in the server/.env file. 
+
+You could have the sensitive variables in docker-compose.yml in a .env file. Then add .env to .gitignore for all directories. 
+
 ### Run with Docker
 
 Be navigated to this root directory in a terminal and enter command:
