@@ -100,7 +100,7 @@ const ApplicationForm = () => {
     // });
 
     axios
-      .get('http://localhost/api/products')
+      .get('http://localhost/api/applications')
       .then((payload) => {
         console.log(payload);
       });
