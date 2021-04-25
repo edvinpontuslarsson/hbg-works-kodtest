@@ -98,6 +98,7 @@ const ApplicationForm = () => {
     //   setSelectedCourse(coursesData[0]);
     //   setSelectedDate(coursesData[0]?.dates[0]);
     // });
+
     axios
       .get('http://localhost/api/products')
       .then((payload) => {
