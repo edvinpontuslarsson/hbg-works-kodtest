@@ -11,9 +11,20 @@ const SubmittedApplications = ({
     <button
       className={fetchApplications}
       onClick={() => {
-        axios.get('/api/applications').then((payload) => {
-          setApplications(payload.data);
-        });
+        axios
+          .get('http://localhost/api/applications')
+          .then((payload) => {
+            setApplications(
+              payload.data.map((application) => {
+                return {
+                  ...application,
+                  participants: JSON.parse(
+                    application.participants
+                  ),
+                };
+              })
+            );
+          });
       }}
     >
       Fetch submitted applications
