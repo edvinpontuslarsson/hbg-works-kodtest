@@ -44,6 +44,7 @@ const ApplicationForm = () => {
     new Participant(),
   ]);
 
+  // TODO get from serverside, read from file
   const coursesData = [
     {
       id: 1,
