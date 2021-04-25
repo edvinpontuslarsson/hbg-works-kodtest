@@ -20,6 +20,7 @@ services:
       dockerfile: nginx.dockerfile
     container_name: nginx
     ports:
+      # TODO try 8080:80, or reverse?, then try proxy react
       - 80:80
     volumes:
       - ./server:/var/www/html:delegated
