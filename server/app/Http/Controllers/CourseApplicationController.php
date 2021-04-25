@@ -25,7 +25,6 @@ class CourseApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO adjust this to also add participants
         return CourseApplication::create($request->all());
     }
 }
