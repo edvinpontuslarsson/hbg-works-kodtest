@@ -3,9 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// TODO remove
-use App\Http\Controllers\ProductController;
-
 use App\Http\Controllers\CourseApplicationController;
 
 /*
@@ -19,11 +16,7 @@ use App\Http\Controllers\CourseApplicationController;
 |
 */
 
-// TODO remove
-Route::get('/products', [ProductController::class, 'index']);
-
-// TODO remove
-Route::post('/products', [ProductController::class, 'store']);
+// TODO get courses from here too
 
 Route::get(
     '/applications', 
