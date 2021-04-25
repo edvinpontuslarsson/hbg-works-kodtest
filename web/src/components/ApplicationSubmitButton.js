@@ -26,7 +26,10 @@ const ApplicationSubmitButton = ({
       .post('http://localhost/api/applications', {
         ...courseApplication,
         participants: JSON.stringify(
-          courseApplication.participants
+          courseApplication.participants.map((item) => {
+            const { id, changed, ...participant } = item;
+            return participant;
+          })
         ),
       })
       .then((result) => {
