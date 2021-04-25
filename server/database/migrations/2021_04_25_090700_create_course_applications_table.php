@@ -20,6 +20,7 @@ class CreateCourseApplicationsTable extends Migration
             $table->string('companyPhone');
             $table->string('courseDate');
             $table->string('courseName');
+            $table->string('participants');
 
             $table->integer('courseId');
 

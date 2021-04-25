@@ -16,5 +16,6 @@ class CourseApplication extends Model
         'courseDate',
         'courseName',
         'courseId',
+        'participants'
     ];
 }

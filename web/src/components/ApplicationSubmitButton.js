@@ -22,16 +22,13 @@ const ApplicationSubmitButton = ({
    * clears/resets the form if the submission went successfully
    */
   const handleSubmit = () => {
-    // TODO this just temp
-    delete courseApplication.participants;
-
-    // console.log(courseApplication)
-
     axios
-      .post(
-        'http://localhost/api/applications',
-        courseApplication
-      )
+      .post('http://localhost/api/applications', {
+        ...courseApplication,
+        participants: JSON.stringify(
+          courseApplication.participants
+        ),
+      })
       .then((result) => {
         console.log(result);
 
@@ -53,8 +50,7 @@ const ApplicationSubmitButton = ({
     <button
       className={submitButton}
       onClick={handleSubmit}
-      // TODO
-      // disabled={disabled}
+      disabled={disabled}
     >
       Submit application
     </button>
