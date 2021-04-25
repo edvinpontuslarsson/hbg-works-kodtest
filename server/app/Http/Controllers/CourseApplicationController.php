@@ -25,13 +25,7 @@ class CourseApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-
-        // return $request;
-        
         // TODO adjust this to also add participants
         return CourseApplication::create($request->all());
-
-        // TODO can I somehow see what comes in request w. types?
     }
 }
