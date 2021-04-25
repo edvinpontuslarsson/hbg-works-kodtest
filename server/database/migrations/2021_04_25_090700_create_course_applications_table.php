@@ -13,14 +13,7 @@ class CreateCourseApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_applications', function (Blueprint $table) {
-            // companyEmail: ""
-            // companyName: ""
-            // companyPhone: ""
-            // courseDate: "2021-01-01"
-            // courseName: "Yoga 101"
-            // courseId: 1
-            
+        Schema::create('course_applications', function (Blueprint $table) {            
             $table->id();
             $table->string('companyEmail');
             $table->string('companyName');
