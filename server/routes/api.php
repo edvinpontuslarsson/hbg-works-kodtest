@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\CourseApplicationController;
 
 /*
@@ -16,7 +17,7 @@ use App\Http\Controllers\CourseApplicationController;
 |
 */
 
-// TODO get courses from here too
+Route::get('/courses', [CoursesController::class, 'index']);
 
 Route::get(
     '/applications', 
