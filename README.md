@@ -76,7 +76,7 @@ The source code for the web client React App is in the directory web/src/
 
 - **Virtualization**: Docker, Docker Compose
 - **Database**: MySQL
+- **Programming language backenend:** PHP version 7+
 - **Programming language frontend:** JavaScript with code standard ECMAScript 2018
-- **Programming language frontend:** PHP version 7+
 - **JavaScript code formatter**: prettier, see the file prettier.config.js in this root directory for formatting settings used
 - **Frameworks/libraries**: Laravel as backend framework. React.js as main frontend library.
