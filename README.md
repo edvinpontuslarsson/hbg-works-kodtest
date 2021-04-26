@@ -26,6 +26,9 @@ http://localhost:3000/
 
 ### Server setup
 
+Run composer install for the Laravel PHP server:<br>
+`docker-compose run composer install`
+
 Migrate tables to database with the following command:<br>
 `docker-compose exec php php /var/www/html/artisan migrate`
 
