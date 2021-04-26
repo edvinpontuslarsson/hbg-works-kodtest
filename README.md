@@ -26,12 +26,10 @@ http://localhost:3000/
 
 ### Server setup
 
-Migrate tables to database with the following command:
-
+Migrate tables to database with the following command:<br>
 `docker-compose exec php php /var/www/html/artisan migrate`
 
-You can clear artisan cache with the following command:
-
+You can clear artisan cache with the following command:<br>
 `docker-compose run artisan config:cache`
 
 ### Tear down
