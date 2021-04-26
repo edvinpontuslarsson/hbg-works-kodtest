@@ -101,7 +101,7 @@ const ApplicationForm = () => {
     // });
 
     axios
-      .get('http://localhost/api/applications')
+      .get('http://localhost/api/courses')
       .then((payload) => {
         console.log(payload);
       });
