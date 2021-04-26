@@ -8,31 +8,11 @@
 
 ## Instructions
 
-### Server setup
-
-To migrate tables to database
-`docker-compose exec php php /var/www/html/artisan migrate`
-
-`docker-compose run artisan config:cache`
-
-To autogenerate file
-`docker-compose run artisan make:model <ModelName> --migration`
-
-`docker-compose run artisan make:controller <ControllerName> --api`
-
-`docker-compose up`
-
-`docker-compose up -d --build site`
-
-`docker-compose run artisan key:generate`
-
-`docker-compose run --rm composer install`
-
 ### Sensitive environment variables
 
-You are recommended to change all passwords and other sensitive environment variables in the root directory's docker-compose.yml file as well as in the server/.env file. 
+You are encouraged to change all passwords and other sensitive environment variables in the root directory's docker-compose.yml file as well as in the server/.env file.
 
-You could have the sensitive variables in docker-compose.yml in a .env file. Then add .env to .gitignore for all directories. 
+You could have the sensitive variables in docker-compose.yml in a .env file. Then add .env to .gitignore for all directories.
 
 ### Run with Docker
 
@@ -43,6 +23,14 @@ Be navigated to this root directory in a terminal and enter command:
 When finished, the web client will be available on port 3000
 
 http://localhost:3000/
+
+### Server setup
+
+Migrate tables to database with the following command:
+`docker-compose exec php php /var/www/html/artisan migrate`
+
+You can clear artisan cache with the following command:
+`docker-compose run artisan config:cache`
 
 ### Tear down
 
@@ -74,7 +62,7 @@ Phone number and email of participants are optional, this interpretation was mad
 - Participant fields can be removed if more than 1 participant has been added
 - Submitted applications stored in database can be viewed by clicking a button at the bottom of the page
 
-### Directories
+### Source Code Directories
 
 #### Server
 
@@ -87,8 +75,8 @@ The source code for the web client React App is in the directory web/src/
 ## Tools used
 
 - **Virtualization**: Docker, Docker Compose
-- **Database**: MongoDB
-- **Programming language backend and frontend:** JavaScript with code standard ECMAScript 2018
-- **Code formatter**: prettier, see the file prettier.config.js in this root directory for formatting settings used
-- **Backend runtime environment**: Node.js
-- **Frameworks/libraries**: Express.js as backend framework. React.js as main frontend library.
+- **Database**: MySQL
+- **Programming language frontend:** JavaScript with code standard ECMAScript 2018
+- **Programming language frontend:** PHP version 7+
+- **JavaScript code formatter**: prettier, see the file prettier.config.js in this root directory for formatting settings used
+- **Frameworks/libraries**: Laravel as backend framework. React.js as main frontend library.
