@@ -15,6 +15,6 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        return file_get_contents(storage_path("app/kurser/kurser.json"), "r");
+        return file_get_contents(storage_path("kurser/kurser.json"), "r");
     }
 }
