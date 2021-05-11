@@ -1,5 +1,7 @@
 # HBG Works Code Test Solution
 
+## This <span>ASP.NET</span> version is still in progress
+
 ## Table of contents
 
 - [Instructions](#instructions)
@@ -62,7 +64,7 @@ The source code for the web client React App is in the directory web/src/
 
 - **Virtualization**: Docker, Docker Compose
 - **Database**: MongoDB
-- **Programming language backend and frontend:** JavaScript with code standard ECMAScript 2018
-- **Code formatter**: prettier, see the file prettier.config.js in this root directory for formatting settings used
-- **Backend runtime environment**: Node.js
-- **Frameworks/libraries**: Express.js as backend framework. React.js as main frontend library.
+- **Programming language frontend:** JavaScript with code standard ECMAScript 2018
+- **Programming language backend:** C#
+- **JavaScript Code formatter**: prettier, see the file prettier.config.js in this root directory for formatting settings used
+- **Frameworks/libraries**: <span>ASP.NET</span> as backend framework. React.js as main frontend library.
